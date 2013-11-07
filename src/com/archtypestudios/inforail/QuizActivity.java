@@ -18,5 +18,15 @@ public class QuizActivity extends Activity {
 		getMenuInflater().inflate(R.menu.quiz, menu);
 		return true;
 	}
+	
+	public void createMultipleChoiceQuestion(){
+		
+	}
+	
+	public void createDragAndDropQuestion() {
+		
+	}
+	
+	
 
 }
