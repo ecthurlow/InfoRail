@@ -10,7 +10,7 @@ public class TrainPart {
 	private int id;
 	
 	@DatabaseField(foreign=true, foreignAutoRefresh=true)
-	private TrainPartType TrainPartType;
+	private TrainPartType trainPartType;
 	
 	@DatabaseField
 	private String imageUrl;
@@ -27,11 +27,11 @@ public class TrainPart {
 	}
 
 	public TrainPartType getTrainPartType() {
-		return TrainPartType;
+		return trainPartType;
 	}
 
 	public void setTrainPartType(TrainPartType trainPartType) {
-		TrainPartType = trainPartType;
+		trainPartType = trainPartType;
 	}
 
 	public String getImageUrl() {

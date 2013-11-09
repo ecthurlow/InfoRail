@@ -13,7 +13,7 @@ import android.util.Log;
 
 public class DatabaseInitializer extends SQLiteOpenHelper {
 	
-	private static String DB_PATH = "/assets/databases";
+	private static String DB_PATH = "/data/data/com.archtypestudios.inforail/databases/";
 	private static String DB_NAME = "InfoRailDB.sqlite";
 	
 	private SQLiteDatabase database;
