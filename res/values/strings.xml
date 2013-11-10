@@ -15,5 +15,10 @@
     <string name="quiz_answer3">Answer 3</string>
     <string name="menu_achievements">Achievements</string>
     <string name="menu_train_builder">Build Your Train</string>
+    
+    <string name="train_name_1">The Amazing Train</string>
+    <string name="train_name_2">The Awsome Train</string>
+    <string name="train_name_3">The Epic Train</string>
+    <string name="train_name_4">The Failure Train</string>
 
 </resources>

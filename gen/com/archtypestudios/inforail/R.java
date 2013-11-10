@@ -25,7 +25,7 @@ public final class R {
     }
     public static final class id {
         public static final int achievementsButton=0x7f080002;
-        public static final int action_settings=0x7f08000a;
+        public static final int action_settings=0x7f08000c;
         public static final int footer=0x7f080001;
         public static final int home_instructions_textView=0x7f080000;
         public static final int quizInstructions=0x7f080005;
@@ -33,6 +33,8 @@ public final class R {
         public static final int radio_answer2=0x7f080008;
         public static final int radio_answer3=0x7f080009;
         public static final int radio_answerGroup=0x7f080006;
+        public static final int selected_train_name=0x7f08000b;
+        public static final int selected_train_textView=0x7f08000a;
         public static final int trainBuilderButton=0x7f080003;
         public static final int train_list_view=0x7f080004;
     }
@@ -63,6 +65,10 @@ public final class R {
         public static final int title_activity_selected_train=0x7f050003;
         public static final int title_activity_train_builder=0x7f050007;
         public static final int trainBuilder_instructions=0x7f050008;
+        public static final int train_name_1=0x7f05000e;
+        public static final int train_name_2=0x7f05000f;
+        public static final int train_name_3=0x7f050010;
+        public static final int train_name_4=0x7f050011;
     }
     public static final class style {
         /** 

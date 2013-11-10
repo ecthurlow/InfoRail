@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.View;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -37,6 +38,9 @@ public class HomeActivity extends Activity {
         
         ListView trainListView = (ListView)findViewById(R.id.train_list_view);
         
+        //A list of all train objects
+        final List<Train> trains = repository.trains.getAll();
+        
         trainNamesList = getTrainNames();
         
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, trainNamesList);
@@ -49,6 +53,11 @@ public class HomeActivity extends Activity {
         	public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
         		String selectedTrain = trainNamesList.get(position);
         		Toast.makeText(getApplicationContext(), "Train Selected:" + selectedTrain, Toast.LENGTH_LONG).show();
+        		
+        		Intent intent = new Intent(HomeActivity.this, SelectedTrainActivity.class);
+        		intent.putExtra("id", trains.get(position).getId());
+        		
+        		startActivity(intent);
         	}
 		});
         

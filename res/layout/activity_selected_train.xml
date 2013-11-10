@@ -9,8 +9,20 @@
     tools:context=".SelectedTrainActivity" >
 
     <TextView
+        android:id="@+id/selected_train_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="@string/title_activity_selected_train" />
+
+    <TextView
+        android:id="@+id/selected_train_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
         android:text="@string/title_activity_selected_train" />
 
 </RelativeLayout>
