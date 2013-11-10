@@ -13,10 +13,7 @@ public class Answer {
 	private Question question;
 	
 	@DatabaseField
-	private String englishText;
-	
-	@DatabaseField
-	private String frenchText;
+	private String textStringId;
 
 	public int getId() {
 		return id;
@@ -34,20 +31,11 @@ public class Answer {
 		this.question = question;
 	}
 
-	public String getEnglishText() {
-		return englishText;
+	public String getTextStringId() {
+		return textStringId;
 	}
 
-	public void setEnglishText(String englishText) {
-		this.englishText = englishText;
+	public void setTextStringId(String textStringId) {
+		this.textStringId = textStringId;
 	}
-
-	public String getFrenchText() {
-		return frenchText;
-	}
-
-	public void setFrenchText(String frenchText) {
-		this.frenchText = frenchText;
-	}
-	
 }

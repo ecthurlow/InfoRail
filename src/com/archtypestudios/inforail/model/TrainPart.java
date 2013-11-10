@@ -31,7 +31,7 @@ public class TrainPart {
 	}
 
 	public void setTrainPartType(TrainPartType trainPartType) {
-		trainPartType = trainPartType;
+		trainPartType = this.trainPartType;
 	}
 
 	public String getImageUrl() {

@@ -10,10 +10,7 @@ public class Train {
 	private int id;
 	
 	@DatabaseField
-	private String englishName;
-	
-	@DatabaseField
-	private String frenchName;
+	private String nameStringId;
 	
 	@DatabaseField
 	private String iconUrl;
@@ -32,20 +29,12 @@ public class Train {
 		this.id = id;
 	}
 
-	public String getEnglishName() {
-		return englishName;
+	public String getNameStringId() {
+		return nameStringId;
 	}
 
-	public void setEnglishName(String englishName) {
-		this.englishName = englishName;
-	}
-
-	public String getFrenchName() {
-		return frenchName;
-	}
-
-	public void setFrenchName(String frenchName) {
-		this.frenchName = frenchName;
+	public void setNameStringId(String nameStringId) {
+		this.nameStringId = nameStringId;
 	}
 
 	public String getIconUrl() {
@@ -64,11 +53,11 @@ public class Train {
 		this.imageUrl = imageUrl;
 	}
 
-	public TrainPart getTrainPartPrizeId() {
+	public TrainPart getTrainPart() {
 		return trainPart;
 	}
 
-	public void setTrainPartPrizeId(TrainPart trainPart) {
+	public void setTrainPart(TrainPart trainPart) {
 		this.trainPart = trainPart;
 	}
 	

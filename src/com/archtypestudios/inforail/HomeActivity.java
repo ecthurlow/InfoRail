@@ -9,21 +9,28 @@ import com.archtypestudios.inforail.model.Train;
 import com.archtypestudios.inforail.repositories.Repository;
 
 import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.View;
+import android.R.layout;
 import android.app.Activity;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.Menu;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 public class HomeActivity extends Activity {
 	
 	Repository repository;
 	
 	ListView trainListView;
+	
+	SimpleCursorAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +62,27 @@ public class HomeActivity extends Activity {
     
     private void setupTrainListView(ListView tlv) {
     	
+    	ProgressBar progressBar = new ProgressBar(this);
+    	progressBar.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+    	progressBar.setIndeterminate(true);
+    	tlv.setEmptyView(progressBar);
+    	
+    	ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
+    	root.addView(progressBar);
+    	
+    	//stuff here
+    	
+    	
+    	
     	final List<Train> trains = repository.trains.getAll();
     	
     	List<String> names = new ArrayList<String>();
     	for (Train train : trains) {
-    		names.add(train.getEnglishName());
+    		names.add(train.getNameStringId());
     	}
     	
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
+    	//mAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, null, trains, android.R.id.text1);
     	tlv.setAdapter(adapter);
     	
     	final Activity activity = this;

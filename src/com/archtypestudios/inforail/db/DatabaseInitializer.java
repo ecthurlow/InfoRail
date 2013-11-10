@@ -25,7 +25,7 @@ public class DatabaseInitializer extends SQLiteOpenHelper {
 	}
 	
 	public void createDatabase() throws IOException {
-		
+		Log.i(DatabaseHelper.class.getName(), "createDatabase");
 		boolean dbExist = checkDatabase();
 		
 		if(!dbExist) {
@@ -39,6 +39,8 @@ public class DatabaseInitializer extends SQLiteOpenHelper {
 	}
 	
 	private boolean checkDatabase() {
+		
+		Log.i(DatabaseHelper.class.getName(), "checkDatabase");
 		
 		SQLiteDatabase checkDB = null;
 		
@@ -57,6 +59,8 @@ public class DatabaseInitializer extends SQLiteOpenHelper {
 	}
 	
 	private void copyDatabase() throws IOException {
+		
+		Log.i(DatabaseHelper.class.getName(), "copyDatabase");
 		
 		InputStream myInput = context.getAssets().open(DB_NAME);
 		

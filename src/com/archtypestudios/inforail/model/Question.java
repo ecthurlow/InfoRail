@@ -13,10 +13,7 @@ public class Question {
 	private Train train;
 	
 	@DatabaseField
-	private String englishText;
-	
-	@DatabaseField
-	private String frenchText;
+	private String textStringId;
 	
 	@DatabaseField(foreign=true, foreignAutoRefresh=true)
 	private QuestionType questionType;
@@ -40,20 +37,12 @@ public class Question {
 		this.train = train;
 	}
 
-	public String getEnglishText() {
-		return englishText;
+	public String getTextStringId() {
+		return textStringId;
 	}
 
-	public void setEnglishText(String englishText) {
-		this.englishText = englishText;
-	}
-
-	public String getFrenchText() {
-		return frenchText;
-	}
-
-	public void setFrenchText(String frenchText) {
-		this.frenchText = frenchText;
+	public void setTextStringId(String textStringId) {
+		this.textStringId = textStringId;
 	}
 
 	public QuestionType getQuestionType() {
