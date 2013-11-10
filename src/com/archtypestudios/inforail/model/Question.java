@@ -17,9 +17,6 @@ public class Question {
 	
 	@DatabaseField(foreign=true, foreignAutoRefresh=true)
 	private QuestionType questionType;
-	
-	@DatabaseField(foreign=true, foreignAutoRefresh=true)
-	private Answer answer;
 
 	public int getId() {
 		return id;
@@ -51,13 +48,5 @@ public class Question {
 
 	public void setQuestionType(QuestionType questionType) {
 		this.questionType = questionType;
-	}
-
-	public Answer getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(Answer answer) {
-		this.answer = answer;
 	}
 }

@@ -14,6 +14,17 @@ public class Answer {
 	
 	@DatabaseField
 	private String textStringId;
+	
+	@DatabaseField
+	private Boolean isCorrect;
+
+	public Boolean getIsCorrect() {
+		return isCorrect;
+	}
+
+	public void setIsCorrect(Boolean isCorrect) {
+		this.isCorrect = isCorrect;
+	}
 
 	public int getId() {
 		return id;

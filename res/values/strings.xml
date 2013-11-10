@@ -13,12 +13,16 @@
     <string name="quiz_answer1">Answer 1</string>
     <string name="quiz_answer2">Answer 2</string>
     <string name="quiz_answer3">Answer 3</string>
+    
+    
+    <!-- Button Names -->
     <string name="menu_achievements">Achievements</string>
     <string name="menu_train_builder">Build Your Train</string>
+    <string name="menu_quiz">Take Quiz Now</string>
+    <string  name="menu_home">Home</string>
     
-    <string name="train_name_1">The Amazing Train</string>
-    <string name="train_name_2">The Awsome Train</string>
-    <string name="train_name_3">The Epic Train</string>
-    <string name="train_name_4">The Failure Train</string>
+    <!-- Content Descriptions -->
+    
+    <string name="selected_train_image_info">An image of the selected train</string>
 
 </resources>

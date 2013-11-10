@@ -17,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class HomeActivity extends Activity {
 	
@@ -51,12 +50,12 @@ public class HomeActivity extends Activity {
         trainListView.setOnItemClickListener(new OnItemClickListener() {
         	//argument position gives the index of item which is clicked
         	public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
-        		String selectedTrain = trainNamesList.get(position);
-        		Toast.makeText(getApplicationContext(), "Train Selected:" + selectedTrain, Toast.LENGTH_LONG).show();
+        		//String selectedTrain = trainNamesList.get(position);
+        		//Toast.makeText(getApplicationContext(), "Train Selected:" + selectedTrain, Toast.LENGTH_LONG).show();
         		
         		Intent intent = new Intent(HomeActivity.this, SelectedTrainActivity.class);
         		intent.putExtra("id", trains.get(position).getId());
-        		
+        		intent.putExtra("name", trains.get(position).getNameStringId());
         		startActivity(intent);
         	}
 		});

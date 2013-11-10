@@ -1,15 +1,17 @@
 package com.archtypestudios.inforail;
 
-import android.R.layout;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
 
 public class SelectedTrainActivity extends Activity {
-
+	
+	int id;
+	String name;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -18,14 +20,31 @@ public class SelectedTrainActivity extends Activity {
 		//Get the intent recieved from the home activity
 		Bundle bundle = new Bundle();
 		bundle = getIntent().getExtras();
-		int id  = bundle.getInt("id");
-		String stringName = "train_name_" + id;
+		id = bundle.getInt("id");
+		name = bundle.getString("name");
 		
+		
+		//Set the train name in the textView
 		TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
 		
-		int stringNameId = getResources().getIdentifier(stringName, "string", this.getPackageName());
+		trainNameTextView.setText(name);
 		
-		trainNameTextView.setText(this.getString(stringNameId));
+		
+		
+	}
+	
+	public void goToHome(View view) {
+		
+	}
+	
+	public void goToQuiz(View view) {
+		Intent intent = new Intent(SelectedTrainActivity.this, QuizActivity.class);
+		intent.putExtra("id", id);
+		intent.putExtra("name", name);
+		startActivity(intent);
+	}
+	
+	public void goToTrainBuilder(View view) {
 		
 	}
 
