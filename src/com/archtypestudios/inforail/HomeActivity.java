@@ -3,7 +3,6 @@ package com.archtypestudios.inforail;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.archtypestudios.inforail.constants.Constants;
 import com.archtypestudios.inforail.R;
 import com.archtypestudios.inforail.model.Train;
 import com.archtypestudios.inforail.repositories.Repository;
@@ -11,45 +10,54 @@ import com.archtypestudios.inforail.repositories.Repository;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.View;
-import android.R.layout;
 import android.app.Activity;
-import android.content.Intent;
-import android.view.Gravity;
 import android.view.Menu;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
+import android.widget.Toast;
 
 public class HomeActivity extends Activity {
 	
 	Repository repository;
 	
-	ListView trainListView;
+	//ListView trainListView;
 	
 	SimpleCursorAdapter mAdapter;
+	
+	ArrayList<String> trainNamesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
         
         repository = new Repository(this);
         
-        ViewGroup contentView = (ViewGroup) getLayoutInflater().inflate(R.layout.activity_home, null);
+        ListView trainListView = (ListView)findViewById(R.id.train_list_view);
         
-        trainListView = (ListView) contentView.findViewById(R.id.train_list_view);
+        trainNamesList = getTrainNames();
+        
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, trainNamesList);
+        //Set The AdapterView
+        trainListView.setAdapter(arrayAdapter);
+        
+        //register onClickListener to handle click events on each item
+        trainListView.setOnItemClickListener(new OnItemClickListener() {
+        	//argument position gives the index of item which is clicked
+        	public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
+        		String selectedTrain = trainNamesList.get(position);
+        		Toast.makeText(getApplicationContext(), "Train Selected:" + selectedTrain, Toast.LENGTH_LONG).show();
+        	}
+		});
         
         
-        setContentView(R.layout.activity_home);
     }
     
     @Override
     protected void onStart() {
     	super.onStart();
-    	setupTrainListView(trainListView);
     }
 
 
@@ -60,41 +68,16 @@ public class HomeActivity extends Activity {
         return true;
     }
     
-    private void setupTrainListView(ListView tlv) {
+    private ArrayList<String> getTrainNames() {
+    	List<Train> trains = repository.trains.getAll();
     	
-    	ProgressBar progressBar = new ProgressBar(this);
-    	progressBar.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-    	progressBar.setIndeterminate(true);
-    	tlv.setEmptyView(progressBar);
+    	ArrayList<String> names = new ArrayList<String>();
     	
-    	ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
-    	root.addView(progressBar);
-    	
-    	//stuff here
-    	
-    	
-    	
-    	final List<Train> trains = repository.trains.getAll();
-    	
-    	List<String> names = new ArrayList<String>();
     	for (Train train : trains) {
     		names.add(train.getNameStringId());
     	}
     	
-    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
-    	//mAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, null, trains, android.R.id.text1);
-    	tlv.setAdapter(adapter);
-    	
-    	final Activity activity = this;
-    	tlv.setOnItemClickListener(new OnItemClickListener() {
-    		
-    		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-    			Train train = trains.get(position);
-    			Intent intent = new Intent(activity, SelectedTrainActivity.class);
-    			intent.putExtra(Constants.keyTrainId, train.getId());
-    			startActivity(intent);
-    		}
-		});
+    	return names;
     }
     
 }

@@ -33,6 +33,8 @@
         android:layout_above="@id/footer"
         android:layout_below="@id/home_instructions_textView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:divider="#0000CC" >
+    </ListView>
 
 </RelativeLayout>
