@@ -7,40 +7,69 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".QuizActivity" >
-
-    <TextView
-        android:id="@+id/quizInstructions"
+	
+    <LinearLayout 
+        android:id="@+id/quiz_content"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
+	    android:layout_height="wrap_content" >
+        
+        <TextView
+	        android:id="@+id/quizInstructions"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/quiz_instructions" />
+	    
+	    <TextView
+	        android:id="@+id/quizQuestion"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:text="@string/quiz_instructions" />
+	
+	    <RadioGroup
+	        android:id="@+id/radio_answerGroup"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="0dp"
+	        android:layout_marginTop="30dp" >
+	
+	        <!-- Radio Buttons generated here -->
+	    </RadioGroup>
+	    
+	    <Button
+	        android:id="@+id/submitAnswerButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:text="@string/button_nextQuestion"
+	        android:onClick="nextQuestionHandler" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/footer"
+        style="@android:style/ButtonBar"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/quiz_instructions" />
-
-    <RadioGroup
-        android:id="@+id/radio_answerGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/quizInstructions"
-        android:layout_below="@+id/quizInstructions"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="30dp" >
-
-        <RadioButton
-            android:id="@+id/radio_answer1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/quiz_answer1" />
-
-        <RadioButton
-            android:id="@+id/radio_answer2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/quiz_answer2" />
-
-        <RadioButton
-            android:id="@+id/radio_answer3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/quiz_answer3" />
-    </RadioGroup>
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+        
+        <Button android:id="@+id/homeButton" android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" android:layout_weight="1" 
+            android:text="@string/menu_home"
+            android:onClick="goToHome" />
+        
+        <Button android:id="@+id/quizButton" android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" android:layout_weight="1" 
+            android:text="@string/menu_quiz"
+            android:onClick="goToQuiz" />
+        
+        <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" android:layout_weight="1" 
+            android:text="@string/menu_train_builder"
+            android:onClick="goToTrainBuilder" />
+        
+    </LinearLayout>
 
 </RelativeLayout>

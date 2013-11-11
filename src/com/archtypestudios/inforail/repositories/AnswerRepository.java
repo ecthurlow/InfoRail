@@ -6,6 +6,7 @@ import android.database.SQLException;
 
 import com.archtypestudios.inforail.db.DatabaseHelper;
 import com.archtypestudios.inforail.model.Answer;
+import com.archtypestudios.inforail.model.Question;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -35,6 +36,18 @@ public class AnswerRepository {
 		} catch (java.sql.SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+	
+	public List<Answer> getByQuestion(Integer id) {
+		
+		try {
+			return answerDao.queryForEq("question_id", id);
+			
+		} catch (java.sql.SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 	

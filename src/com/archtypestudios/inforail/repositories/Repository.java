@@ -9,6 +9,8 @@ public class Repository {
 
 	DatabaseHelper db;
 	
+	public AnswerRepository answers;
+	public QuestionRepository questions;
 	public TrainRepository trains;
 	
 	public Repository(Context context) {
@@ -16,6 +18,8 @@ public class Repository {
 		DatabaseManager manager = new DatabaseManager();
 		db = manager.getHelper(context);
 		
+		answers = new AnswerRepository(db);
+		questions = new QuestionRepository(db);
 		trains = new TrainRepository(db);
 	}
 }
