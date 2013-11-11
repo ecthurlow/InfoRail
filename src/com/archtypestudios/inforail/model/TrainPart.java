@@ -51,7 +51,8 @@ public class TrainPart {
 		this.won = won;
 	}
 	
-	private enum TrainPartType {
+	//TODO: make private?
+	public enum TrainPartType {
 		ENGINE,
 		CAR,
 		CABOOSE

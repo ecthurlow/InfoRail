@@ -1,25 +1,83 @@
 package com.archtypestudios.inforail;
 
-import com.archtypestudios.inforail.widgets.HorizontalListView;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lucasr.twowayview.TwoWayView;
+
+import com.archtypestudios.inforail.model.TrainPart;
+import com.archtypestudios.inforail.repositories.Repository;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 
 public class TrainBuilderActivity extends Activity {
+	
+	private Repository repository;
 
-	HorizontalListView trainPartsCollection;
+	private List<TrainPart> trainParts;
+	
+	private static ArrayList<Integer> trainPartIds;
+	private static ArrayList<String> trainPartImages;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_train_builder);
 		
-		trainPartsCollection = (HorizontalListView)findViewById(R.id.trainPartCollection);
+		repository = new Repository(this);
+		//Get all user won train parts
+		trainParts = repository.trainParts.getAllWon();
+				
+		trainPartIds = getTrainPartIds();
+		trainPartImages = getTrainPartImages();
+		
+		ArrayAdapter<Integer> ids = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, trainPartIds);
+		TwoWayView trainPartCollection = (TwoWayView)findViewById(R.id.trainPartCollection);
+		trainPartCollection.setAdapter(ids);
+	}
+		
+	public Bitmap getBitmapFromAsset(String strName){
+        AssetManager assetManager = getAssets();
+        InputStream istr = null;
+        try {
+            istr = assetManager.open(strName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Bitmap bitmap = BitmapFactory.decodeStream(istr);
+        return bitmap;
+    }
+	
+	public ArrayList<Integer> getTrainPartIds() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		
+		for (TrainPart trainPart : trainParts) {
+			//list.add(Integer.toString(trainPart.getId()));
+			list.add(trainPart.getId());
+		}
+		
+		//String[] trainPartIds = list.toArray(new String[list.size()]);
+		
+		return list;
 	}
 	
-	public void loadTrainParts() {
+	public ArrayList<String> getTrainPartImages() {
+		ArrayList<String> list = new ArrayList<String>();
 		
+		for (TrainPart trainPart : trainParts) {
+			list.add("images/trainParts/" + trainPart.getTrainPartType().toString().toLowerCase() + trainPart.getId() + ".png");
+		}
+		
+		
+		return list;
 	}
 
 	@Override

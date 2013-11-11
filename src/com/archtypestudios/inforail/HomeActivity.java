@@ -57,8 +57,12 @@ public class HomeActivity extends Activity {
         		startActivity(intent);
         	}
 		});
-        
-        
+         
+    }
+    
+    public void goToTrainBuilder() {
+    	Intent intent = new Intent(HomeActivity.this, TrainBuilderActivity.class);
+    	startActivity(intent);
     }
     
     @Override

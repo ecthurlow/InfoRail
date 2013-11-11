@@ -6,7 +6,6 @@ import android.database.SQLException;
 
 import com.archtypestudios.inforail.db.DatabaseHelper;
 import com.archtypestudios.inforail.model.Answer;
-import com.archtypestudios.inforail.model.Question;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
