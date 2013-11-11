@@ -3,6 +3,7 @@ package com.archtypestudios.inforail;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ public class SelectedTrainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		setContentView(R.layout.activity_selected_train);
 		
 		//Get the intent recieved from the home activity
@@ -29,12 +31,11 @@ public class SelectedTrainActivity extends Activity {
 		
 		trainNameTextView.setText(name);
 		
-		
-		
 	}
 	
 	public void goToHome(View view) {
-		
+		Intent intent = new Intent(SelectedTrainActivity.this, HomeActivity.class);
+		startActivity(intent);
 	}
 	
 	public void goToQuiz(View view) {
@@ -45,7 +46,8 @@ public class SelectedTrainActivity extends Activity {
 	}
 	
 	public void goToTrainBuilder(View view) {
-		
+		Intent intent = new Intent(SelectedTrainActivity.this, TrainBuilderActivity.class);
+		startActivity(intent);
 	}
 
 	@Override

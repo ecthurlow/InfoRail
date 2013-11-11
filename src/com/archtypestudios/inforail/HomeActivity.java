@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.GridView;
 
 public class HomeActivity extends Activity {
 	
@@ -35,7 +35,7 @@ public class HomeActivity extends Activity {
         
         repository = new Repository(this);
         
-        ListView trainListView = (ListView)findViewById(R.id.train_list_view);
+        GridView trainGridView = (GridView)findViewById(R.id.train_grid_view);
         
         //A list of all train objects
         final List<Train> trains = repository.trains.getAll();
@@ -44,14 +44,12 @@ public class HomeActivity extends Activity {
         
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, trainNamesList);
         //Set The AdapterView
-        trainListView.setAdapter(arrayAdapter);
+        trainGridView.setAdapter(arrayAdapter);
         
         //register onClickListener to handle click events on each item
-        trainListView.setOnItemClickListener(new OnItemClickListener() {
+        trainGridView.setOnItemClickListener(new OnItemClickListener() {
         	//argument position gives the index of item which is clicked
         	public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
-        		//String selectedTrain = trainNamesList.get(position);
-        		//Toast.makeText(getApplicationContext(), "Train Selected:" + selectedTrain, Toast.LENGTH_LONG).show();
         		
         		Intent intent = new Intent(HomeActivity.this, SelectedTrainActivity.class);
         		intent.putExtra("id", trains.get(position).getId());

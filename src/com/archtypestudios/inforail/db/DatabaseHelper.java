@@ -13,7 +13,7 @@ import com.archtypestudios.inforail.model.QuestionType;
 import com.archtypestudios.inforail.model.Train;
 import com.archtypestudios.inforail.model.TrainInfo;
 import com.archtypestudios.inforail.model.TrainPart;
-import com.archtypestudios.inforail.model.TrainPartType;
+import com.archtypestudios.inforail.model.OLDTrainPartType;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
@@ -32,7 +32,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private Dao<Train, Integer> trainDao = null;
 	private Dao<TrainInfo, Integer> trainInfoDao = null;
 	private Dao<TrainPart, Integer> trainPartDao = null;
-	private Dao<TrainPartType, Integer> trainPartTypeDao = null;
+	private Dao<OLDTrainPartType, Integer> trainPartTypeDao = null;
 	
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -60,7 +60,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.createTable(connectionSource, Train.class);
 			TableUtils.createTable(connectionSource, TrainInfo.class);
 			TableUtils.createTable(connectionSource, TrainPart.class);
-			TableUtils.createTable(connectionSource, TrainPartType.class);
+			TableUtils.createTable(connectionSource, OLDTrainPartType.class);
 		} catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
             throw new RuntimeException(e);
@@ -84,7 +84,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.dropTable(connectionSource, Train.class, true);
 			TableUtils.dropTable(connectionSource, TrainInfo.class, true);
 			TableUtils.dropTable(connectionSource, TrainPart.class, true);
-			TableUtils.dropTable(connectionSource, TrainPartType.class, true);
+			TableUtils.dropTable(connectionSource, OLDTrainPartType.class, true);
 			
 			onCreate(db);
 			
@@ -175,11 +175,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		return trainPartDao;
 	}
 
-	public Dao<TrainPartType, Integer> getTrainPartTypeDao() {
+	public Dao<OLDTrainPartType, Integer> getTrainPartTypeDao() {
 
 		if (null == trainPartTypeDao) {
 			try {
-				trainPartTypeDao = getDao(TrainPartType.class);
+				trainPartTypeDao = getDao(OLDTrainPartType.class);
 			}catch (java.sql.SQLException e) {
 				e.printStackTrace();
 			}

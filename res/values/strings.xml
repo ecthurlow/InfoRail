@@ -19,6 +19,9 @@
     <string name="correct">Correct!</string>
     <string name="incorrect">Incorrect</string>
     
+    <!-- Train Builder Activity -->
+    <string name="trainBuilder_trainPartsTitle">Your Train Cars</string>
+    
     <!-- Button Names -->
     <string name="menu_achievements">Achievements</string>
     <string name="menu_train_builder">Build Your Train</string>
@@ -27,6 +30,8 @@
     <string name="button_nextQuestion">Next Question</string>
     <string name="button_finishQuiz">Finish Quiz</string>
     <string name="button_retryQuiz">Retry Quiz</string>
+    <string name="button_rebuild">Rebuild</string>
+    <string name="button_play">Play</string>
     
     <!--  Messages -->
     <string name="noAnswerSelected">Please select an answer</string>

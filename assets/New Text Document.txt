@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS "answer";
+CREATE TABLE "answer" ("id" INTEGER PRIMARY KEY  NOT NULL ,"textStringId" TEXT NOT NULL  DEFAULT (null) );
+DROP TABLE IF EXISTS "question";
+CREATE TABLE "question" ("id" INTEGER PRIMARY KEY  NOT NULL ,"train" INTEGER , "textStringId" TEXT DEFAULT (null) ,"questionType" INTEGER, "answer" INTEGER UNIQUE, FOREIGN KEY("train") REFERENCES 
+
+train("id") , FOREIGN KEY("questionType") REFERENCES questionType("id") , FOREIGN KEY("answer") REFERENCES answer("id"));
+DROP TABLE IF EXISTS "questionType";
+CREATE TABLE "questionType" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "type" TEXT);
+DROP TABLE IF EXISTS "train";
+CREATE TABLE "train" ("id" INTEGER PRIMARY KEY  NOT NULL ,"nameStringId" TEXT DEFAULT (null) ,"iconUrl" TEXT,"imageUrl" TEXT,"trainPart_id" INTEGER , FOREIGN KEY("trainPart_id") REFERENCES trainPart
+
+("id"));
+INSERT INTO "train" VALUES(1,'Train1',NULL,NULL,NULL);
+INSERT INTO "train" VALUES(2,'Train2',NULL,NULL,NULL);
+INSERT INTO "train" VALUES(3,'Train3',NULL,NULL,NULL);
+INSERT INTO "train" VALUES(4,'Train4
+Train4',NULL,NULL,NULL);
+DROP TABLE IF EXISTS "trainInfo";
+CREATE TABLE "trainInfo" ("id" INTEGER PRIMARY KEY  NOT NULL ,"train" INTEGER , "textStringId" TEXT DEFAULT (null) ,"imageUrl" TEXT,"xPosition" FLOAT,"yPosition" FLOAT , FOREIGN KEY("train") 
+
+REFERENCES train("id"));
+DROP TABLE IF EXISTS "trainPart";
+CREATE TABLE "trainPart" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "trainPartType" INTEGER , "imageUrl" TEXT, "won" BOOL , FOREIGN KEY("trainPartType") REFERENCES trainPartType("id"));
+DROP TABLE IF EXISTS "trainPartType";
+CREATE TABLE "trainPartType" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "type" TEXT);

@@ -9,11 +9,11 @@
     tools:context=".SelectedTrainActivity" >
 	
     <LinearLayout
-        android:id="@+id/content"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@id/footer"
-        android:orientation="vertical" >
+        android:id="@+id/header"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true" >
         
         <TextView
 	        android:id="@+id/selected_train_textView"
@@ -22,50 +22,68 @@
 	        android:layout_marginLeft="10dp"
 	        android:text="@string/seleted_train_instructions"
 	        android:textSize="30sp" />
-
-	    <ImageView
+        
+    </LinearLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/selectedActivity_Content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/header"
+        android:layout_centerInParent="true" >
+        
+        <ImageView
 	        android:id="@+id/trainImageView"
 	        android:layout_width="fill_parent"
 	        android:layout_height="900dp"
 	        android:layout_marginTop="20dp"
 	        android:contentDescription="@string/selected_train_image_info"
 	        android:src="@drawable/ic_launcher" />
-	
-	    <TextView
-	        android:id="@+id/selected_train_name"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="20dp"
-	        android:layout_marginBottom="20dp"
-	        android:text="@string/title_activity_selected_train"
-	        android:textSize="40sp" />
         
-    </LinearLayout>
+    </RelativeLayout>
     
-    
-    <LinearLayout
+    <LinearLayout 
         android:id="@+id/footer"
-        style="@android:style/ButtonBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal" >
+        android:orientation="vertical">
         
-        <Button android:id="@+id/homeButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
-            android:text="@string/menu_home"
-            android:onClick="goToHome" />
+        <TextView
+            android:id="@+id/selected_train_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/title_activity_selected_train"
+            android:textSize="30sp" />
         
-        <Button android:id="@+id/quizButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
-            android:text="@string/menu_quiz"
-            android:onClick="goToQuiz" />
+        <LinearLayout
+	        android:id="@+id/buttons"
+	        style="@android:style/ButtonBar"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
+	        
+	        <Button android:id="@+id/homeButton" android:layout_width="wrap_content" 
+	            android:layout_height="wrap_content" android:layout_weight="1" 
+	            android:text="@string/menu_home"
+	            android:onClick="goToHome" />
+	        
+	        <Button android:id="@+id/quizButton" android:layout_width="wrap_content" 
+	            android:layout_height="wrap_content" android:layout_weight="1" 
+	            android:text="@string/menu_quiz"
+	            android:onClick="goToQuiz" />
+	        
+	        <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
+	            android:layout_height="wrap_content" android:layout_weight="1" 
+	            android:text="@string/menu_train_builder"
+	            android:onClick="goToTrainBuilder" />
         
-        <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
-            android:text="@string/menu_train_builder"
-            android:onClick="goToTrainBuilder" />
+    	</LinearLayout>
         
     </LinearLayout>
+    
     
 </RelativeLayout>

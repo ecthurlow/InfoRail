@@ -1,5 +1,6 @@
 package com.archtypestudios.inforail.model;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -9,7 +10,7 @@ public class TrainPart {
 	@DatabaseField(generatedId=true)
 	private int id;
 	
-	@DatabaseField(foreign=true, foreignAutoRefresh=true)
+	@DatabaseField(dataType=DataType.ENUM_STRING)
 	private TrainPartType trainPartType;
 	
 	@DatabaseField
@@ -48,5 +49,11 @@ public class TrainPart {
 
 	public void setWon(Boolean won) {
 		this.won = won;
+	}
+	
+	private enum TrainPartType {
+		ENGINE,
+		CAR,
+		CABOOSE
 	}
 }

@@ -1,15 +1,25 @@
 package com.archtypestudios.inforail;
 
+import com.archtypestudios.inforail.widgets.HorizontalListView;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
 public class TrainBuilderActivity extends Activity {
 
+	HorizontalListView trainPartsCollection;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_train_builder);
+		
+		trainPartsCollection = (HorizontalListView)findViewById(R.id.trainPartCollection);
+	}
+	
+	public void loadTrainParts() {
+		
 	}
 
 	@Override

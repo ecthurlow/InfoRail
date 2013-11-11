@@ -8,9 +8,99 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".TrainBuilderActivity" >
 
-    <TextView
+    
+    
+    <LinearLayout
+        android:id="@+id/header"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true" >
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/trainBuilder_instructions" />
+       
+    </LinearLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/trainBuilder_Content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/header"
+        android:layout_marginBottom="10dp"
+        android:layout_centerInParent="true"
+        android:background="#EEEEEE" >
+        
+        <com.archtypestudios.inforail.widgets.HorizontalListView 
+            android:id="@+id/trainPartCollection"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true" >
+            
+        </com.archtypestudios.inforail.widgets.HorizontalListView>
+        <!-- 
+        <ScrollView 
+            android:id="@+id/trainPartCollection"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:scrollbars="horizontal" >
+            
+            <LinearLayout
+                android:id="@+id/trainPasts"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                
+            </LinearLayout>
+            
+        </ScrollView>
+         -->
+         
+        <TextView 
+            android:id="@+id/trainBuilder_trainPartsTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/trainPartCollection"
+            android:text="@string/trainBuilder_trainPartsTitle" />
+        
+        <RelativeLayout
+            android:id="@+id/buildingArea"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/trainBuilder_trainPartsTitle" >
+            
+        </RelativeLayout>
+        
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/footer"
+        style="@android:style/ButtonBar"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/trainBuilder_instructions" />
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+        
+        <Button android:id="@+id/homeButton" android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" android:layout_weight="1" 
+            android:text="@string/menu_home"
+            android:onClick="goToHome" />
+        
+        <Button android:id="@+id/rebuildButton" android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" android:layout_weight="1" 
+            android:text="@string/button_rebuild"
+            android:onClick="goToQuiz" />
+        
+        <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" android:layout_weight="1" 
+            android:text="@string/button_play"
+            android:onClick="goToTrainBuilder" />
+        
+    </LinearLayout>
 
 </RelativeLayout>

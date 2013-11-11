@@ -41,3 +41,6 @@ DROP TABLE IF EXISTS "trainPart";
 CREATE TABLE "trainPart" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "trainPartType_id" INTEGER , "imageUrl" TEXT, "won" BOOL , FOREIGN KEY("trainPartType_id") REFERENCES trainPartType("id"));
 DROP TABLE IF EXISTS "trainPartType";
 CREATE TABLE "trainPartType" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "type" TEXT);
+INSERT INTO "trainPartType" VALUES(1,'engine');
+INSERT INTO "trainPartType" VALUES(2,'car');
+INSERT INTO "trainPartType" VALUES(3,'caboose');
