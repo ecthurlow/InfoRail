@@ -26,20 +26,20 @@ public final class R {
     public static final class id {
         public static final int achievementsButton=0x7f080002;
         public static final int action_settings=0x7f080010;
-        public static final int content=0x7f08000c;
+        public static final int content=0x7f08000b;
         public static final int footer=0x7f080001;
-        public static final int homeButton=0x7f08000a;
+        public static final int homeButton=0x7f080009;
         public static final int home_instructions_textView=0x7f080000;
-        public static final int quizButton=0x7f08000b;
+        public static final int nextQuestionButton=0x7f08000a;
+        public static final int quizButton=0x7f08000f;
         public static final int quizInstructions=0x7f080006;
         public static final int quizQuestion=0x7f080007;
         public static final int quiz_content=0x7f080005;
         public static final int radio_answerGroup=0x7f080008;
-        public static final int selected_train_name=0x7f08000f;
-        public static final int selected_train_textView=0x7f08000d;
-        public static final int submitAnswerButton=0x7f080009;
+        public static final int selected_train_name=0x7f08000e;
+        public static final int selected_train_textView=0x7f08000c;
         public static final int trainBuilderButton=0x7f080003;
-        public static final int trainImageView=0x7f08000e;
+        public static final int trainImageView=0x7f08000d;
         public static final int train_list_view=0x7f080004;
     }
     public static final class layout {
@@ -59,6 +59,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int button_finishQuiz=0x7f050014;
         public static final int button_nextQuestion=0x7f050013;
+        public static final int button_retryQuiz=0x7f050015;
         public static final int correct=0x7f05000d;
         public static final int incorrect=0x7f05000e;
         public static final int main_instructions=0x7f050002;
@@ -70,7 +71,7 @@ public final class R {
         public static final int menu_train_builder=0x7f050010;
         /**   Messages 
          */
-        public static final int noAnswerSelected=0x7f050015;
+        public static final int noAnswerSelected=0x7f050016;
         public static final int quiz_answer1=0x7f050009;
         public static final int quiz_answer2=0x7f05000a;
         public static final int quiz_answer3=0x7f05000b;
@@ -80,7 +81,7 @@ public final class R {
         public static final int quiz_resutlts=0x7f05000c;
         /**  Content Descriptions 
          */
-        public static final int selected_train_image_info=0x7f050016;
+        public static final int selected_train_image_info=0x7f050017;
         public static final int seleted_train_instructions=0x7f050004;
         public static final int title_activity_quiz=0x7f050005;
         public static final int title_activity_selected_train=0x7f050003;

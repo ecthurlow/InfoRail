@@ -36,14 +36,6 @@
 	
 	        <!-- Radio Buttons generated here -->
 	    </RadioGroup>
-	    
-	    <Button
-	        android:id="@+id/submitAnswerButton"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="20dp"
-	        android:text="@string/button_nextQuestion"
-	        android:onClick="nextQuestionHandler" />
         
     </LinearLayout>
     
@@ -60,10 +52,10 @@
             android:text="@string/menu_home"
             android:onClick="goToHome" />
         
-        <Button android:id="@+id/quizButton" android:layout_width="wrap_content" 
+        <Button android:id="@+id/nextQuestionButton" android:layout_width="wrap_content" 
             android:layout_height="wrap_content" android:layout_weight="1" 
-            android:text="@string/menu_quiz"
-            android:onClick="goToQuiz" />
+            android:text="@string/button_nextQuestion"
+            android:onClick="nextQuestionHandler" />
         
         <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
             android:layout_height="wrap_content" android:layout_weight="1" 

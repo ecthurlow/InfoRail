@@ -9,6 +9,7 @@ import com.archtypestudios.inforail.repositories.Repository;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -111,6 +112,12 @@ public class QuizActivity extends Activity {
 			answerGroup.addView(rb);
 		}
 		
+		//Change text on next question button to "Finish Quiz" if this is the last question
+		if(questionIndex == questions.size()-1) {
+			Button nextQuestionButton = (Button)findViewById(R.id.nextQuestionButton);
+			nextQuestionButton.setText(R.string.button_finishQuiz);
+		}
+		
 	}
 	
 	
@@ -131,6 +138,10 @@ public class QuizActivity extends Activity {
 			//create linear layout
 			LinearLayout answerLayout = new LinearLayout(this);
 			answerLayout.setOrientation(LinearLayout.VERTICAL);
+
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+			params.setMargins(0, 20, 0, 0);
+			answerLayout.setLayoutParams(params);
 			
 			//Get answer from repository
 			Answer answer = repository.answers.getById(selectedAnswer);
@@ -149,7 +160,7 @@ public class QuizActivity extends Activity {
 			TextView result = new TextView(this);
 			if (answer.getIsCorrect() == true) {
 				result.setText(R.string.correct);
-				answerLayout.addView(result);
+				answerLayout.addView(result, params);
 			}
 			
 			else {
@@ -159,35 +170,30 @@ public class QuizActivity extends Activity {
 			}
 			
 			contentLayout.addView(answerLayout);
-			/*
-			TextView question = new TextView(this);
-			question.setText(answer.getQuestion().getTextStringId());
-			linearLayout.addView(question);
 			
-			//show answer
-			TextView answerT = new TextView(this);
-			question.setText(answer.getQuestion().getTextStringId());
-			linearLayout.addView(question);
-			
-			//Add correct or incorrect
-			TextView result = new TextView(this);
-			
-			if (answer.getIsCorrect() == true) {
-				result.setText(R.string.correct);
-				linearLayout.addView(result);
-			}
-			
-			else {
-				result.setText(R.string.incorrect);
-				linearLayout.addView(result);
+			Button nextQuestionButton = (Button)findViewById(R.id.nextQuestionButton);
+			nextQuestionButton.setText(R.string.button_retryQuiz);
+			nextQuestionButton.setOnClickListener(new View.OnClickListener() {
 				
-				
-			}
-			*/
-			
-			//Else, add the word incorrect and give the correct answer below
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(QuizActivity.this, QuizActivity.class);
+					intent.putExtra("id", id);
+					intent.putExtra("name", name);
+					startActivity(intent);
+				}
+			});
 		}
 		
+	}
+	
+	public void goToHome(View view) {
+		Intent intent = new Intent(QuizActivity.this, HomeActivity.class);
+		startActivity(intent);
+	}
+	
+	public void goToTrainBuilder(View view) {
+		//TODO: Implement goToTrainBuilder method
 	}
 
 	@Override
@@ -196,15 +202,5 @@ public class QuizActivity extends Activity {
 		getMenuInflater().inflate(R.menu.quiz, menu);
 		return true;
 	}
-	
-	public void createMultipleChoiceQuestion(){
-		
-	}
-	
-	public void createDragAndDropQuestion() {
-		
-	}
-	
-	
 
 }
