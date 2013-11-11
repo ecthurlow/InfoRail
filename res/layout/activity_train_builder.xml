@@ -46,24 +46,7 @@
 		     android:drawSelectorOnTop="false"
 		     tools:context=".MainActivity" />
         
-        <!-- 
-        <ScrollView 
-            android:id="@+id/trainPartCollection"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:scrollbars="horizontal" >
-            
-            <LinearLayout
-                android:id="@+id/trainPasts"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-                
-            </LinearLayout>
-            
-        </ScrollView>
-         -->
+        
          
         <TextView 
             android:id="@+id/trainBuilder_trainPartsTitle"
@@ -98,12 +81,11 @@
         <Button android:id="@+id/rebuildButton" android:layout_width="wrap_content" 
             android:layout_height="wrap_content" android:layout_weight="1" 
             android:text="@string/button_rebuild"
-            android:onClick="goToQuiz" />
+             />
         
         <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
             android:layout_height="wrap_content" android:layout_weight="1" 
-            android:text="@string/button_play"
-            android:onClick="goToTrainBuilder" />
+            android:text="@string/button_play" />
         
     </LinearLayout>
 

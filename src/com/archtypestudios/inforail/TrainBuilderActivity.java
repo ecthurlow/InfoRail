@@ -7,15 +7,18 @@ import java.util.List;
 
 import org.lucasr.twowayview.TwoWayView;
 
+import com.archtypestudios.inforail.adapters.TrainPartAdapter;
 import com.archtypestudios.inforail.model.TrainPart;
 import com.archtypestudios.inforail.repositories.Repository;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
 
 public class TrainBuilderActivity extends Activity {
@@ -39,9 +42,19 @@ public class TrainBuilderActivity extends Activity {
 		trainPartIds = getTrainPartIds();
 		trainPartImages = getTrainPartImages();
 		
+		TwoWayView trainPartCollection = (TwoWayView)findViewById(R.id.trainPartCollection);
+		
+		TrainPartAdapter adapter = new TrainPartAdapter(this, R.layout.listview_item, trainParts);
+		
+		trainPartCollection.setAdapter(adapter);
+		
+		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, resource)
+		
+		/*
 		ArrayAdapter<Integer> ids = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, trainPartIds);
 		TwoWayView trainPartCollection = (TwoWayView)findViewById(R.id.trainPartCollection);
 		trainPartCollection.setAdapter(ids);
+		*/
 	}
 		
 	public Bitmap getBitmapFromAsset(String strName){
@@ -78,6 +91,11 @@ public class TrainBuilderActivity extends Activity {
 		
 		
 		return list;
+	}
+	
+	public void goToHome(View view) {
+		Intent intent = new Intent(TrainBuilderActivity.this, HomeActivity.class);
+		startActivity(intent);
 	}
 
 	@Override
