@@ -13,10 +13,7 @@ public class TrainInfo {
 	private Train train;
 	
 	@DatabaseField
-	private String englishText;
-	
-	@DatabaseField
-	private String frenchText;
+	private String textStringId;
 	
 	@DatabaseField
 	private String imageUrl;
@@ -35,28 +32,20 @@ public class TrainInfo {
 		this.id = id;
 	}
 
-	public Train getTrainId() {
+	public Train getTrain() {
 		return train;
 	}
 
-	public void setTrainId(Train train) {
+	public void setTrain(Train train) {
 		this.train = train;
 	}
 
-	public String getEnglishText() {
-		return englishText;
+	public String getTextStringId() {
+		return textStringId;
 	}
 
-	public void setEnglishText(String englishText) {
-		this.englishText = englishText;
-	}
-
-	public String getFrenchText() {
-		return frenchText;
-	}
-
-	public void setFrenchText(String frenchText) {
-		this.frenchText = frenchText;
+	public void setTextStringId(String textStringId) {
+		this.textStringId = textStringId;
 	}
 
 	public String getImageUrl() {
@@ -82,5 +71,4 @@ public class TrainInfo {
 	public void setyPosition(int yPosition) {
 		this.yPosition = yPosition;
 	}
-	
 }

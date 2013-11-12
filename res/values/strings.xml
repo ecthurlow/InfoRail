@@ -15,6 +15,7 @@
     <string name="quiz_answer3">Answer 3</string>
     
     <!-- Quiz Activity -->
+    <string name="noQuestionsAvailable">Sorry, there are currently no questions available for this train.</string>
     <string name="quiz_resutlts">Your Results</string>
     <string name="correct">Correct!</string>
     <string name="incorrect">Incorrect</string>

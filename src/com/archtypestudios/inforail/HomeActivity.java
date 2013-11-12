@@ -60,7 +60,7 @@ public class HomeActivity extends Activity {
          
     }
     
-    public void goToTrainBuilder() {
+    public void goToTrainBuilder(View view) {
     	Intent intent = new Intent(HomeActivity.this, TrainBuilderActivity.class);
     	startActivity(intent);
     }

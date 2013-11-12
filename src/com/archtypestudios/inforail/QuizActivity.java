@@ -58,7 +58,15 @@ public class QuizActivity extends Activity {
 		//Initialize selected answers
 		selectedAnswers = new ArrayList<Integer>();
 		
-		loadNextQuestion();
+		if (questions.size() > 0 ) {
+			
+			loadNextQuestion();
+		}
+		
+		else {
+			questionTextView.setText(R.string.noQuestionsAvailable);
+		}
+		
 	}
 	
 	public void nextQuestionHandler(View view) {
@@ -193,8 +201,9 @@ public class QuizActivity extends Activity {
 	}
 	
 	public void goToTrainBuilder(View view) {
-		//TODO: Implement goToTrainBuilder method
-	}
+    	Intent intent = new Intent(QuizActivity.this, TrainBuilderActivity.class);
+    	startActivity(intent);
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

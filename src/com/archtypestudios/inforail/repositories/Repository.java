@@ -13,6 +13,7 @@ public class Repository {
 	public QuestionRepository questions;
 	public TrainRepository trains;
 	public TrainPartRepository trainParts;
+	public TrainInfoRepository trainInfo;
 	
 	public Repository(Context context) {
 		
@@ -22,6 +23,7 @@ public class Repository {
 		answers = new AnswerRepository(db);
 		questions = new QuestionRepository(db);
 		trains = new TrainRepository(db);
+		trainInfo = new TrainInfoRepository(db);
 		trainParts = new TrainPartRepository(db);
 	}
 }
