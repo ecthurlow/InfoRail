@@ -7,18 +7,16 @@ import com.archtypestudios.inforail.model.TrainInfo;
 import com.archtypestudios.inforail.repositories.Repository;
 
 import android.os.Bundle;
-import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SelectedTrainActivity extends Activity {
 	
@@ -60,8 +58,8 @@ public class SelectedTrainActivity extends Activity {
 			infoIcon.setId(trainInfo.getId());
 			infoIcon.setImageResource(R.drawable.ic_launcher);
 			
-			infoIcon.getLayoutParams().width = LayoutParams.WRAP_CONTENT;
-			infoIcon.getLayoutParams().height = LayoutParams.WRAP_CONTENT;
+			infoIcon.setLayoutParams(new ViewGroup.LayoutParams(40, 40));
+			
 			
 			infoIcon.setOnClickListener(new OnClickListener() {
 				
@@ -70,15 +68,13 @@ public class SelectedTrainActivity extends Activity {
 					
 					//set train info in a text view
 					TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
-					trainNameTextView.setText(trainInfos.get(v.getId()).getTextStringId());
+					int trainInfoIndex = v.getId()-1;
+					trainNameTextView.setText(trainInfos.get(trainInfoIndex).getTextStringId());
 				}
 			});
+			
+			content.addView(infoIcon);
 		}
-		
-	}
-	
-	public void loadTrainInfo(List<TrainInfo> trainInfos) { 
-		
 		
 	}
 	

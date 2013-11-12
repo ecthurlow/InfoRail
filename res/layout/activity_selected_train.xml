@@ -10,18 +10,19 @@
 	
     <LinearLayout
         android:id="@+id/header"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
         
         <TextView
-	        android:id="@+id/selected_train_textView"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="10dp"
-	        android:text="@string/seleted_train_instructions"
-	        android:textSize="30sp" />
+            android:id="@+id/selected_train_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/seleted_train_instructions"
+            android:textSize="30sp" />
         
     </LinearLayout>
     
@@ -46,32 +47,35 @@
             android:id="@+id/selected_train_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:text="@string/title_activity_selected_train"
             android:textSize="30sp" />
         
         <LinearLayout
 	        android:id="@+id/buttons"
-	        style="@android:style/ButtonBar"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:orientation="horizontal" >
+	        android:orientation="horizontal"
+	        style="@android:attr/buttonBarStyle" >
 	        
 	        <Button android:id="@+id/homeButton" android:layout_width="wrap_content" 
 	            android:layout_height="wrap_content" android:layout_weight="1" 
 	            android:text="@string/menu_home"
-	            android:onClick="goToHome" />
+	            android:onClick="goToHome"
+	            style="@android:attr/buttonBarButtonStyle" />
 	        
 	        <Button android:id="@+id/quizButton" android:layout_width="wrap_content" 
 	            android:layout_height="wrap_content" android:layout_weight="1" 
 	            android:text="@string/menu_quiz"
-	            android:onClick="goToQuiz" />
+	            android:onClick="goToQuiz"
+	            style="@android:attr/buttonBarButtonStyle" />
 	        
 	        <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
 	            android:layout_height="wrap_content" android:layout_weight="1" 
 	            android:text="@string/menu_train_builder"
-	            android:onClick="goToTrainBuilder" />
+	            android:onClick="goToTrainBuilder"
+	            style="@android:attr/buttonBarButtonStyle" />
         
     	</LinearLayout>
         

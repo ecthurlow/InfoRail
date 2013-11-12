@@ -41,25 +41,34 @@
     
     <LinearLayout
         android:id="@+id/footer"
-        style="@android:style/ButtonBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        style="@android:attr/buttonBarStyle"
         android:orientation="horizontal" >
         
-        <Button android:id="@+id/homeButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
+        <Button android:id="@+id/homeButton"
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
             android:text="@string/menu_home"
+            style="@android:attr/buttonBarButtonStyle"
             android:onClick="goToHome" />
         
-        <Button android:id="@+id/nextQuestionButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
+        <Button android:id="@+id/nextQuestionButton" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
             android:text="@string/button_nextQuestion"
+            style="@android:attr/buttonBarButtonStyle"
             android:onClick="nextQuestionHandler" />
         
-        <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
+        <Button android:id="@+id/trainBuilderButton" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
             android:text="@string/menu_train_builder"
+            style="@android:attr/buttonBarButtonStyle"
             android:onClick="goToTrainBuilder" />
         
     </LinearLayout>

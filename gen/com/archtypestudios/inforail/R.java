@@ -48,6 +48,8 @@ public final class R {
         public static final int train_icon2=0x7f020018;
         public static final int train_icon3=0x7f020019;
         public static final int train_icon4=0x7f02001a;
+        public static final int trainbuildingarea_shape=0x7f02001b;
+        public static final int trainbuildingarea_shape_droptarget=0x7f02001c;
     }
     public static final class id {
         public static final int achievementsButton=0x7f080002;

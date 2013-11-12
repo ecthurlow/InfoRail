@@ -16,14 +16,16 @@
     
     <LinearLayout android:id="@+id/footer" android:layout_width="fill_parent" 
         android:layout_height="wrap_content" android:orientation="horizontal" 
-        android:layout_alignParentBottom="true" style="@android:style/ButtonBar">
+        android:layout_alignParentBottom="true" 
+        style="@android:attr/buttonBarStyle">
         
         <Button 
             android:id="@+id/achievementsButton" 
             android:layout_width="wrap_content" 
             android:layout_height="wrap_content" 
             android:layout_weight="1" 
-            android:text="@string/menu_achievements" />
+            android:text="@string/menu_achievements"
+            style="@android:attr/buttonBarButtonStyle" />
         
         <Button 
             android:id="@+id/trainBuilderButton" 
@@ -31,7 +33,8 @@
             android:layout_height="wrap_content" 
             android:layout_weight="1" 
             android:text="@string/menu_train_builder"
-            android:onClick="goToTrainBuilder" />
+            android:onClick="goToTrainBuilder"
+            style="@android:attr/buttonBarButtonStyle" />
         
     </LinearLayout>
     

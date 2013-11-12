@@ -31,8 +31,7 @@
         android:layout_above="@id/footer"
         android:layout_below="@id/header"
         android:layout_marginBottom="10dp"
-        android:layout_centerInParent="true"
-        android:background="#EEEEEE" >
+        android:layout_centerInParent="true" >
         
         <org.lucasr.twowayview.TwoWayView 
 		     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,16 +41,18 @@
 		     style="@style/TwoWayView"
 		     android:layout_width="fill_parent"
 		     android:layout_height="100dp"
+		     android:layout_marginTop="5dp"
 		     android:layout_alignParentBottom="true"
 		     android:drawSelectorOnTop="false"
-		     tools:context=".MainActivity" />
+		     android:background="#EEEEEE"
+		     tools:context=".MainActivity" >
+	     </org.lucasr.twowayview.TwoWayView>
         
-        
-         
         <TextView 
             android:id="@+id/trainBuilder_trainPartsTitle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@id/trainPartCollection"
             android:text="@string/trainBuilder_trainPartsTitle" />
         
         <RelativeLayout
@@ -59,7 +60,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_alignParentTop="true"
-            android:layout_above="@id/trainBuilder_trainPartsTitle" >
+            android:layout_above="@id/trainBuilder_trainPartsTitle"
+            android:background="@drawable/trainbuildingarea_shape" >
             
         </RelativeLayout>
         
@@ -67,25 +69,27 @@
     
     <LinearLayout
         android:id="@+id/footer"
-        style="@android:style/ButtonBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        style="@android:attr/buttonBarStyle" >
         
         <Button android:id="@+id/homeButton" android:layout_width="wrap_content" 
             android:layout_height="wrap_content" android:layout_weight="1" 
             android:text="@string/menu_home"
-            android:onClick="goToHome" />
+            android:onClick="goToHome"
+            style="@android:attr/buttonBarButtonStyle" />
         
         <Button android:id="@+id/rebuildButton" android:layout_width="wrap_content" 
             android:layout_height="wrap_content" android:layout_weight="1" 
             android:text="@string/button_rebuild"
-             />
+            style="@android:attr/buttonBarButtonStyle" />
         
         <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
             android:layout_height="wrap_content" android:layout_weight="1" 
-            android:text="@string/button_play" />
+            android:text="@string/button_play"
+            style="@android:attr/buttonBarButtonStyle" />
         
     </LinearLayout>
 
