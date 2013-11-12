@@ -1,11 +1,13 @@
 package com.archtypestudios.inforail;
 
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SelectedTrainActivity extends Activity {
@@ -26,10 +28,17 @@ public class SelectedTrainActivity extends Activity {
 		name = bundle.getString("name");
 		
 		
-		//Set the train name in the textView
+		//Get Elements
 		TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
+		ImageView trainImage = (ImageView)findViewById(R.id.trainImageView);
 		
+		//Set Element Values
 		trainNameTextView.setText(name);
+		
+		String drawableName = "train" + id;
+        
+        int drawableId = getResources().getIdentifier(drawableName, "drawable", getPackageName());
+        trainImage.setImageResource(drawableId);
 		
 	}
 	

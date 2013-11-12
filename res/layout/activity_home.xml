@@ -18,12 +18,18 @@
         android:layout_height="wrap_content" android:orientation="horizontal" 
         android:layout_alignParentBottom="true" style="@android:style/ButtonBar">
         
-        <Button android:id="@+id/achievementsButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
+        <Button 
+            android:id="@+id/achievementsButton" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
             android:text="@string/menu_achievements" />
         
-        <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
+        <Button 
+            android:id="@+id/trainBuilderButton" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
             android:text="@string/menu_train_builder" />
         
     </LinearLayout>
@@ -40,4 +46,5 @@
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
         android:gravity="center" />
+    
 </RelativeLayout>

@@ -1,7 +1,5 @@
 package com.archtypestudios.inforail;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +11,16 @@ import com.archtypestudios.inforail.repositories.Repository;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.view.View.DragShadowBuilder;
+import android.view.View.OnDragListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class TrainBuilderActivity extends Activity {
 	
@@ -48,26 +49,22 @@ public class TrainBuilderActivity extends Activity {
 		
 		trainPartCollection.setAdapter(adapter);
 		
-		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, resource)
+		 //register onClickListener to handle click events on each item
+        trainPartCollection.setOnItemLongClickListener(new OnItemLongClickListener() {
+        	//argument position gives the index of item which is clicked
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View v,
+					int arg2, long arg3) {
+				// TODO Auto-generated method stub
+				DragShadowBuilder dragshadow = new DragShadowBuilder(v);
+        		ClipData data = ClipData.newPlainText("", "");
+        		
+        		v.startDrag(data, dragshadow, v, 0);
+        		return true;
+			}
+		});
 		
-		/*
-		ArrayAdapter<Integer> ids = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, trainPartIds);
-		TwoWayView trainPartCollection = (TwoWayView)findViewById(R.id.trainPartCollection);
-		trainPartCollection.setAdapter(ids);
-		*/
 	}
-		
-	public Bitmap getBitmapFromAsset(String strName){
-        AssetManager assetManager = getAssets();
-        InputStream istr = null;
-        try {
-            istr = assetManager.open(strName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Bitmap bitmap = BitmapFactory.decodeStream(istr);
-        return bitmap;
-    }
 	
 	public ArrayList<Integer> getTrainPartIds() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
@@ -104,5 +101,33 @@ public class TrainBuilderActivity extends Activity {
 		getMenuInflater().inflate(R.menu.train_builder, menu);
 		return true;
 	}
+	
+	OnDragListener DropListener = new View.OnDragListener() {
+
+	    @Override
+	    public boolean onDrag(View v, DragEvent event) {
+	        // TODO Auto-generated method stub
+
+	        int dragEvent = event.getAction();
+
+	        switch (dragEvent) {
+	        case DragEvent.ACTION_DRAG_ENTERED:
+	            Log.i("Drag ", "Entered");
+	            break;
+	        case DragEvent.ACTION_DRAG_EXITED:
+	            Log.i("Drag ", "Exit");
+	            break;
+	        case DragEvent.ACTION_DROP:
+	            Log.i("Drag ", "Drop");
+
+	            //Stuff here
+	            break;
+	        default:
+	            break;
+	        }
+
+	        return true;
+	    }
+	};
 
 }

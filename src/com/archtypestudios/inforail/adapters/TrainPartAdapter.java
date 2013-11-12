@@ -1,8 +1,5 @@
 package com.archtypestudios.inforail.adapters;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.archtypestudios.inforail.R;
@@ -10,9 +7,11 @@ import com.archtypestudios.inforail.model.TrainPart;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,25 +55,50 @@ public class TrainPartAdapter extends ArrayAdapter<TrainPart> {
         
         TrainPart trainPart = data.get(position);
         holder.txtTitle.setText(Integer.toString(trainPart.getId()));
-        //holder.imgIcon.setImageResource(trainPart.);
         
-        Bitmap bitmap = getBitmapFromAsset("images/trainParts/" + trainPart.getTrainPartType().toString().toLowerCase() + trainPart.getId() + ".png");
-        holder.imgIcon.setImageBitmap(bitmap);
+    	String drawableName = trainPart.getTrainPartType().toString().toLowerCase() + trainPart.getId();
+        int drawableId = context.getResources().getIdentifier(drawableName, "drawable", context.getPackageName());
+        
+        Drawable scaledDrawable = getScaledDrawable(drawableId, 200);
+        
+        holder.imgIcon.setImageDrawable(scaledDrawable);
         
         return row;
     }
     
-    public Bitmap getBitmapFromAsset(String strName){
-        AssetManager assetManager = context.getAssets();
-        InputStream istr = null;
-        try {
-            istr = assetManager.open(strName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Bitmap bitmap = BitmapFactory.decodeStream(istr);
-        return bitmap;
+	public Drawable getScaledDrawable(int drawableId, int boundBoxInDp) {
+    	
+		BitmapDrawable bd = (BitmapDrawable) context.getResources().getDrawable(drawableId);
+		
+    	// Get current dimensions
+        double imageWidth = bd.getBitmap().getWidth();
+        double imageHeight = bd.getBitmap().getHeight();
+        
+        double ratio = ((double)boundBoxInDp) /imageWidth;
+        int newImageHeight = (int) (imageHeight * ratio);
+
+        Bitmap bMap = BitmapFactory.decodeResource(context.getResources(), drawableId);
+        Drawable drawable = new BitmapDrawable(context.getResources(), getResizedBitmap(bMap, newImageHeight, boundBoxInDp));
+        
+        return drawable;
     }
+	
+	public Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
+		
+		int width = bm.getWidth();
+		int height = bm.getHeight();
+		
+		float scaleWidth = ((float)  newWidth) / width;
+		float scaleHeight = ((float) newHeight) / height;
+		
+		Matrix matrix = new Matrix();
+		
+		matrix.postScale(scaleWidth, scaleHeight);
+		
+		Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
+		
+		return resizedBitmap;
+	}
     
     static class TrainPartHolder
     {

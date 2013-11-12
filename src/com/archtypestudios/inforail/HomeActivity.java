@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.archtypestudios.inforail.R;
+import com.archtypestudios.inforail.adapters.TrainAdapter;
 import com.archtypestudios.inforail.model.Train;
 import com.archtypestudios.inforail.repositories.Repository;
 
@@ -15,7 +16,6 @@ import android.content.Intent;
 import android.view.Menu;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 public class HomeActivity extends Activity {
@@ -42,9 +42,9 @@ public class HomeActivity extends Activity {
         
         trainNamesList = getTrainNames();
         
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, trainNamesList);
+        TrainAdapter adapter = new TrainAdapter(this, R.layout.gridview_item, trains);
         //Set The AdapterView
-        trainGridView.setAdapter(arrayAdapter);
+        trainGridView.setAdapter(adapter);
         
         //register onClickListener to handle click events on each item
         trainGridView.setOnItemClickListener(new OnItemClickListener() {
