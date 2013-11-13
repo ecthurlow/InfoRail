@@ -11,6 +11,7 @@ import com.archtypestudios.inforail.repositories.Repository;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.R.anim;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ClipData;
@@ -62,20 +63,6 @@ public class TrainBuilderActivity extends Activity {
 		
 		trainPartCollection.setAdapter(adapter);
 		
-		 //register onClickListener to handle click events on each item
-        trainPartCollection.setOnItemLongClickListener(new OnItemLongClickListener() {
-        	//argument position gives the index of item which is clicked
-			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View v,
-					int position, long id) {
-				// TODO Auto-generated method stub
-				DragShadowBuilder dragshadow = new DragShadowBuilder(v);
-        		ClipData data = ClipData.newPlainText("", "");
-        		
-        		v.startDrag(data, dragshadow, v, 0);
-        		return true;
-			}
-		});
         
         RelativeLayout buildingArea = (RelativeLayout) findViewById(R.id.buildingArea);
         buildingArea.setOnDragListener(new MyDragListener());
@@ -118,69 +105,58 @@ public class TrainBuilderActivity extends Activity {
 		
 	class MyDragListener implements OnDragListener {
 		
-		Drawable enterShape = getResources().getDrawable(R.drawable.trainbuildingarea_shape_droptarget);
-		Drawable normalShape = getResources().getDrawable(R.drawable.trainbuildingarea_shape);
+		Drawable enterShape = getResources().getDrawable(R.drawable.trainbuilder_background_over);
+		Drawable normalShape = getResources().getDrawable(R.drawable.trainbuilder_background);
 		
-        int enterShapeId = getResources().getIdentifier("trainbuildingarea_shape_droptarget", "drawable", getPackageName());
-        int normalShapeId = getResources().getIdentifier("trainbuildingarea_shape", "drawable", getPackageName());
+        private int enterShapeId = getResources().getIdentifier("trainbuilder_background_over", "drawable", getPackageName());
+        private int normalShapeId = getResources().getIdentifier("trainbuilder_background", "drawable", getPackageName());
+        
+        private boolean canDrop = false;
         
 		@Override
 		public boolean onDrag(View v, DragEvent event) {
 			
 			final int action = event.getAction();
+			ImageView trainPart = (ImageView) event.getLocalState();
+			
 			switch (action) {
 			
 			case DragEvent.ACTION_DRAG_STARTED:
+				Log.i("Drag ", "Started");
+				
+				trainPart.setBackgroundResource(android.R.color.transparent);
 				//do nothing
 				break;
 			case DragEvent.ACTION_DRAG_ENTERED:
 				Log.i("Drag ", "Entered");
 				
 				v.setBackgroundResource(enterShapeId);
+				canDrop = true;
 				break;
 			case DragEvent.ACTION_DRAG_EXITED:
 				Log.i("Drag ", "Exit");
 				
 				v.setBackgroundResource(normalShapeId);
+				canDrop = false;
 				break;
 			case DragEvent.ACTION_DROP:
 				//Dropped, create new ImageView with same drawable as the dropped view's ImageView
 				Log.i("Drag ", "Drop");
 				
-				//Dropped View (List Item)
-				
-				
-				ViewGroup view = (ViewGroup) event.getLocalState();
-				//train part image
-				Drawable viewImage = ((ImageView) view.getChildAt(0)).getDrawable();
-				
-				/*
-				//New ImageView to use in the building space
-				ImageView trainPart = new ImageView(context);
-				trainPart.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-				trainPart.setX(getPosX(viewImage, event));
-				trainPart.setY(getPosY(viewImage, event));
-				trainPart.setImageDrawable(viewImage);
-				
-				
-				view.setEnabled(false);
-				
-				RelativeLayout buildingArea = (RelativeLayout) v;
-				buildingArea.addView(trainPart);
-				trainPart.setVisibility(view.VISIBLE);
-				*/
-				trainPart.setOnTouchListener(new OnTouchListener() {
+				//Dropped View (ImageView of ListView)
+				if (canDrop == true) {
+					ViewGroup owner = (ViewGroup) trainPart.getParent();
+					owner.removeView(trainPart);
 					
-					@Override
-					public boolean onTouch(View v, MotionEvent event) {
-						// TODO Auto-generated method stub
-						DragShadowBuilder dragshadow = new DragShadowBuilder(v);
-		        		ClipData data = ClipData.newPlainText("", "");
-		        		
-		        		v.startDrag(data, dragshadow, v, 0);
-		        		return true;
-					}
-				});
+					trainPart.setX(getPosX(trainPart.getDrawable(), event));
+					trainPart.setY(getPosY(trainPart.getDrawable(), event));
+					
+					RelativeLayout buildingArea = (RelativeLayout) v;
+					buildingArea.addView(trainPart);
+					trainPart.setVisibility(View.VISIBLE);
+				}
+				
+				
 				break;
 			case DragEvent.ACTION_DRAG_ENDED:
 				v.setBackgroundResource(normalShapeId);

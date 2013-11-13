@@ -1,34 +1,33 @@
 package com.archtypestudios.inforail.adapters;
 
 import java.util.List;
+import java.util.Locale;
 
 import com.archtypestudios.inforail.R;
 import com.archtypestudios.inforail.model.TrainPart;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import android.view.View.DragShadowBuilder;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class TrainPartAdapter extends ArrayAdapter<TrainPart> {
 	
-	Context context; 
+	static Context context; 
     int layoutResourceId;    
     List<TrainPart> data = null;
     
     public TrainPartAdapter(Context context, int layoutResourceId, List<TrainPart> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
-        this.context = context;
+        TrainPartAdapter.context = context;
         this.data = data;
     }
 
@@ -53,52 +52,34 @@ public class TrainPartAdapter extends ArrayAdapter<TrainPart> {
             holder = (TrainPartHolder)row.getTag();
         }
         
+        //get train part from list
         TrainPart trainPart = data.get(position);
+        //set text view to train part id TODO:Remove this?
         holder.txtTitle.setText(Integer.toString(trainPart.getId()));
         
-    	String drawableName = trainPart.getTrainPartType().toString().toLowerCase() + trainPart.getId();
+        //get train part image id from drawables by name
+    	String drawableName = trainPart.getTrainPartType().toString().toLowerCase(Locale.getDefault()) + trainPart.getId();
         int drawableId = context.getResources().getIdentifier(drawableName, "drawable", context.getPackageName());
         
-        Drawable scaledDrawable = getScaledDrawable(drawableId, 200);
+        //set image drawable
+        holder.imgIcon.setImageResource(drawableId);
         
-        holder.imgIcon.setImageDrawable(scaledDrawable);
+        //set startDrag event listener
+        holder.imgIcon.setOnLongClickListener(new OnLongClickListener() {
+			
+			@Override
+			public boolean onLongClick(View v) {
+				DragShadowBuilder dragshadow = new DragShadowBuilder(v);
+        		ClipData data = ClipData.newPlainText("", "");
+        		
+        		
+        		v.startDrag(data, dragshadow, v, 0);
+        		return true;
+			}	
+		});
         
         return row;
     }
-    
-	public Drawable getScaledDrawable(int drawableId, int boundBoxInDp) {
-    	
-		BitmapDrawable bd = (BitmapDrawable) context.getResources().getDrawable(drawableId);
-		
-    	// Get current dimensions
-        double imageWidth = bd.getBitmap().getWidth();
-        double imageHeight = bd.getBitmap().getHeight();
-        
-        double ratio = ((double)boundBoxInDp) /imageWidth;
-        int newImageHeight = (int) (imageHeight * ratio);
-
-        Bitmap bMap = BitmapFactory.decodeResource(context.getResources(), drawableId);
-        Drawable drawable = new BitmapDrawable(context.getResources(), getResizedBitmap(bMap, newImageHeight, boundBoxInDp));
-        
-        return drawable;
-    }
-	
-	public Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
-		
-		int width = bm.getWidth();
-		int height = bm.getHeight();
-		
-		float scaleWidth = ((float)  newWidth) / width;
-		float scaleHeight = ((float) newHeight) / height;
-		
-		Matrix matrix = new Matrix();
-		
-		matrix.postScale(scaleWidth, scaleHeight);
-		
-		Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
-		
-		return resizedBitmap;
-	}
     
     static class TrainPartHolder
     {

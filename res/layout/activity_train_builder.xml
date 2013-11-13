@@ -61,7 +61,7 @@
             android:layout_height="fill_parent"
             android:layout_alignParentTop="true"
             android:layout_above="@id/trainBuilder_trainPartsTitle"
-            android:background="@drawable/trainbuildingarea_shape" >
+            android:background="@drawable/trainbuilder_background" >
             
         </RelativeLayout>
         
