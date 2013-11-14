@@ -17,15 +17,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 public class HomeActivity extends Activity {
-	
-	protected TextView title;
-	protected ImageView icon;
 	
 	protected Repository repository;
 	
@@ -38,17 +34,11 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-        
         setContentView(R.layout.activity_home);
+        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.header);
         
-        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,    R.layout.window_title);
-        
-        title = (TextView) findViewById(R.id.title);
-        icon  = (ImageView) findViewById(R.id.icon);
-        icon.setImageResource(R.drawable.ic_launcher);
-        
-        
-        this.title.setText(R.string.app_name);
+        TextView title = (TextView)findViewById(R.id.title);
+        title.setText("Blah");
         
         repository = new Repository(this);
         

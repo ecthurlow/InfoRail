@@ -31,9 +31,7 @@ import android.widget.TextView;
 
 public class TrainBuilderActivity extends Activity {
 	
-	protected TextView title;
-	protected ImageView icon;
-	
+	//Data
 	private Repository repository;
 	final private Context context = this;
 
@@ -46,21 +44,8 @@ public class TrainBuilderActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-
-		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-		 
-        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
         
         setContentView(R.layout.activity_train_builder);
- 
-        title = (TextView) findViewById(R.id.title);
-        icon  = (ImageView) findViewById(R.id.icon);
-        icon.setImageResource(R.drawable.ic_launcher);
-        
-        
-		
-		this.title.setText(R.string.menu_train_builder);
 		
 		repository = new Repository(this);
 		//Get all user won train parts

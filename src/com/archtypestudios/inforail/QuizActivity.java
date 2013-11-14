@@ -24,9 +24,6 @@ import android.widget.Toast;
 
 public class QuizActivity extends Activity {
 	
-	protected TextView title;
-	protected ImageView icon;
-	
 	int id;
 	String name;
 	
@@ -45,15 +42,7 @@ public class QuizActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-		
 		setContentView(R.layout.activity_quiz);
-		
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,    R.layout.window_title);
-		
-		title = (TextView) findViewById(R.id.title);
-        icon  = (ImageView) findViewById(R.id.icon);
-        icon.setImageResource(R.drawable.ic_launcher);
 		
 		repository = new Repository(this);
 		
@@ -61,8 +50,6 @@ public class QuizActivity extends Activity {
 		Bundle bundle = getIntent().getExtras();
 		id = bundle.getInt("id");
 		name = bundle.getString("name");
-		
-		this.title.setText(R.string.menu_quiz + " - " + name);
 		
 		//Get elements
 		questionTextView = (TextView)findViewById(R.id.quizQuestion);

@@ -22,9 +22,6 @@ import android.widget.TextView;
 
 public class SelectedTrainActivity extends Activity {
 	
-	protected TextView title;
-	protected ImageView icon;
-	
 	protected Repository repository;
 	
 	protected int id;
@@ -36,15 +33,8 @@ public class SelectedTrainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		
-		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-		
 		setContentView(R.layout.activity_selected_train);
 		
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,    R.layout.window_title);
-		
-		title = (TextView) findViewById(R.id.title);
-        icon  = (ImageView) findViewById(R.id.icon);
-        icon.setImageResource(R.drawable.ic_launcher);
 		
 		repository = new Repository(this);
 		
@@ -54,9 +44,6 @@ public class SelectedTrainActivity extends Activity {
 		id = bundle.getInt("id");
 		name = bundle.getString("name");
 		final List<TrainInfo> trainInfos = repository.trainInfo.getByTrain(id);
-		
-		
-		this.title.setText(name);
 		
 		//Get Elements
 		TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
