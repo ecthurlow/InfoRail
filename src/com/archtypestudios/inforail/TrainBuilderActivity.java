@@ -8,34 +8,31 @@ import org.lucasr.twowayview.TwoWayView;
 import com.archtypestudios.inforail.adapters.TrainPartAdapter;
 import com.archtypestudios.inforail.model.TrainPart;
 import com.archtypestudios.inforail.repositories.Repository;
+import com.archtypestudios.inforail.themes.InfoRailActivity;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.R.anim;
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.View.DragShadowBuilder;
+import android.view.Window;
 import android.view.View.OnDragListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class TrainBuilderActivity extends Activity {
+	
+	protected TextView title;
+	protected ImageView icon;
 	
 	private Repository repository;
 	final private Context context = this;
@@ -46,9 +43,24 @@ public class TrainBuilderActivity extends Activity {
 	private static ArrayList<String> trainPartImages;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_train_builder);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+		 
+        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
+        
+        setContentView(R.layout.activity_train_builder);
+ 
+        title = (TextView) findViewById(R.id.title);
+        icon  = (ImageView) findViewById(R.id.icon);
+        icon.setImageResource(R.drawable.ic_launcher);
+        
+        
+		
+		this.title.setText(R.string.menu_train_builder);
 		
 		repository = new Repository(this);
 		//Get all user won train parts
@@ -143,17 +155,25 @@ public class TrainBuilderActivity extends Activity {
 				//Dropped, create new ImageView with same drawable as the dropped view's ImageView
 				Log.i("Drag ", "Drop");
 				
+				RelativeLayout buildingArea = (RelativeLayout) v;
+				LinearLayout trainContainer = (LinearLayout) buildingArea.getChildAt(0);
+				
 				//Dropped View (ImageView of ListView)
 				if (canDrop == true) {
 					ViewGroup owner = (ViewGroup) trainPart.getParent();
+					
 					owner.removeView(trainPart);
 					
-					trainPart.setX(getPosX(trainPart.getDrawable(), event));
-					trainPart.setY(getPosY(trainPart.getDrawable(), event));
+					//trainPart.setX(getPosX(trainPart.getDrawable(), event));
+					//trainPart.setY(getPosY(trainPart.getDrawable(), event));
 					
-					RelativeLayout buildingArea = (RelativeLayout) v;
-					buildingArea.addView(trainPart);
+					//buildingArea.addView(trainPart);
+					trainContainer.addView(trainPart);
 					trainPart.setVisibility(View.VISIBLE);
+				}
+				
+				else if (trainPart.getParent() == trainContainer) {
+					
 				}
 				
 				

@@ -21,64 +21,73 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int car1=0x7f020000;
-        public static final int car10=0x7f020001;
-        public static final int car11=0x7f020002;
-        public static final int car12=0x7f020003;
-        public static final int car13=0x7f020004;
-        public static final int car2=0x7f020005;
-        public static final int car3=0x7f020006;
-        public static final int car4=0x7f020007;
-        public static final int car5=0x7f020008;
-        public static final int car6=0x7f020009;
-        public static final int car7=0x7f02000a;
-        public static final int car8=0x7f02000b;
-        public static final int car9=0x7f02000c;
-        public static final int engine14=0x7f02000d;
-        public static final int engine15=0x7f02000e;
-        public static final int engine16=0x7f02000f;
-        public static final int engine17=0x7f020010;
-        public static final int engine18=0x7f020011;
-        public static final int ic_launcher=0x7f020012;
-        public static final int train1=0x7f020013;
-        public static final int train2=0x7f020014;
-        public static final int train3=0x7f020015;
-        public static final int train4=0x7f020016;
-        public static final int train_icon1=0x7f020017;
-        public static final int train_icon2=0x7f020018;
-        public static final int train_icon3=0x7f020019;
-        public static final int train_icon4=0x7f02001a;
-        public static final int trainbuilder_background=0x7f02001b;
-        public static final int trainbuilder_background_over=0x7f02001c;
-        public static final int trainbuildingarea_shape=0x7f02001d;
-        public static final int trainbuildingarea_shape_droptarget=0x7f02001e;
+        public static final int button_radio=0x7f020000;
+        public static final int car1=0x7f020001;
+        public static final int car10=0x7f020002;
+        public static final int car11=0x7f020003;
+        public static final int car12=0x7f020004;
+        public static final int car13=0x7f020005;
+        public static final int car2=0x7f020006;
+        public static final int car3=0x7f020007;
+        public static final int car4=0x7f020008;
+        public static final int car5=0x7f020009;
+        public static final int car6=0x7f02000a;
+        public static final int car7=0x7f02000b;
+        public static final int car8=0x7f02000c;
+        public static final int car9=0x7f02000d;
+        public static final int engine14=0x7f02000e;
+        public static final int engine15=0x7f02000f;
+        public static final int engine16=0x7f020010;
+        public static final int engine17=0x7f020011;
+        public static final int engine18=0x7f020012;
+        public static final int ic_launcher=0x7f020013;
+        public static final int inforail_bg=0x7f020014;
+        public static final int radio_checked_down=0x7f020015;
+        public static final int radio_checked_up=0x7f020016;
+        public static final int radio_unchecked_down=0x7f020017;
+        public static final int radio_unchecked_up=0x7f020018;
+        public static final int train1=0x7f020019;
+        public static final int train2=0x7f02001a;
+        public static final int train3=0x7f02001b;
+        public static final int train4=0x7f02001c;
+        public static final int train_icon1=0x7f02001d;
+        public static final int train_icon2=0x7f02001e;
+        public static final int train_icon3=0x7f02001f;
+        public static final int train_icon4=0x7f020020;
+        public static final int trainbuilder_background=0x7f020021;
+        public static final int trainbuilder_background_over=0x7f020022;
+        public static final int trainbuildingarea_shape=0x7f020023;
+        public static final int trainbuildingarea_shape_droptarget=0x7f020024;
     }
     public static final class id {
         public static final int achievementsButton=0x7f080002;
-        public static final int action_settings=0x7f080018;
+        public static final int action_settings=0x7f08001b;
         public static final int buildingArea=0x7f080014;
         public static final int buttons=0x7f08000f;
         public static final int footer=0x7f080001;
         public static final int header=0x7f08000b;
         public static final int homeButton=0x7f080009;
         public static final int home_instructions_textView=0x7f080000;
-        public static final int imgIcon=0x7f080016;
+        public static final int icon=0x7f080019;
+        public static final int imgIcon=0x7f080017;
         public static final int nextQuestionButton=0x7f08000a;
         public static final int quizButton=0x7f080010;
         public static final int quizInstructions=0x7f080006;
         public static final int quizQuestion=0x7f080007;
         public static final int quiz_content=0x7f080005;
         public static final int radio_answerGroup=0x7f080008;
-        public static final int rebuildButton=0x7f080015;
+        public static final int rebuildButton=0x7f080016;
         public static final int selectedActivity_Content=0x7f08000d;
         public static final int selected_train_name=0x7f08000e;
         public static final int selected_train_textView=0x7f08000c;
+        public static final int title=0x7f08001a;
         public static final int trainBuilderButton=0x7f080003;
         public static final int trainBuilder_Content=0x7f080011;
         public static final int trainBuilder_trainPartsTitle=0x7f080013;
+        public static final int trainContainer=0x7f080015;
         public static final int trainPartCollection=0x7f080012;
         public static final int train_grid_view=0x7f080004;
-        public static final int txtTitle=0x7f080017;
+        public static final int txtTitle=0x7f080018;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
@@ -87,6 +96,7 @@ public final class R {
         public static final int activity_train_builder=0x7f030003;
         public static final int gridview_item=0x7f030004;
         public static final int listview_item=0x7f030005;
+        public static final int window_title=0x7f030006;
     }
     public static final class menu {
         public static final int home=0x7f070000;
@@ -161,6 +171,12 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060001;
+        /**  InfoRail Theme 
+         */
+        public static final int InfoRailTheme=0x7f060003;
+        /**  ^ 
+         */
+        public static final int InfoRailWindowTitleBackground=0x7f060004;
         /**  Two Way View Theme 
          */
         public static final int TwoWayView=0x7f060002;

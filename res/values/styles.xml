@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -22,5 +22,20 @@
     <style name="TwoWayView">
 	    <item name="android:orientation">horizontal</item>
 	</style>
+	
 
+    
+    <!-- InfoRail Theme -->
+    <style name="InfoRailTheme" parent="android:Theme">
+        <item name="android:windowBackground">@drawable/inforail_bg</item>
+        <item name="android:windowTitleSize">35dp</item>
+        <item name="android:windowTitleBackgroundStyle">@style/InfoRailWindowTitleBackground</item>
+    </style>
+	
+	<!-- ^ -->
+	<style name="InfoRailWindowTitleBackground">
+	    <item name="android:background">#FFFFFF</item>
+	</style>
+	
+	
 </resources>

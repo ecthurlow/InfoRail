@@ -40,5 +40,6 @@
     <!-- Content Descriptions -->
     
     <string name="selected_train_image_info">An image of the selected train</string>
+    
 
 </resources>

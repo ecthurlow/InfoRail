@@ -7,31 +7,48 @@ import com.archtypestudios.inforail.R;
 import com.archtypestudios.inforail.adapters.TrainAdapter;
 import com.archtypestudios.inforail.model.Train;
 import com.archtypestudios.inforail.repositories.Repository;
+import com.archtypestudios.inforail.themes.InfoRailActivity;
 
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.View;
+import android.view.Window;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 public class HomeActivity extends Activity {
 	
-	Repository repository;
+	protected TextView title;
+	protected ImageView icon;
 	
-	//ListView trainListView;
+	protected Repository repository;
 	
 	SimpleCursorAdapter mAdapter;
 	
 	ArrayList<String> trainNamesList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+        
         setContentView(R.layout.activity_home);
+        
+        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,    R.layout.window_title);
+        
+        title = (TextView) findViewById(R.id.title);
+        icon  = (ImageView) findViewById(R.id.icon);
+        icon.setImageResource(R.drawable.ic_launcher);
+        
+        
+        this.title.setText(R.string.app_name);
         
         repository = new Repository(this);
         

@@ -32,6 +32,26 @@
         android:layout_below="@id/header"
         android:layout_marginBottom="10dp"
         android:layout_centerInParent="true" >
+        <!-- 
+        <HorizontalScrollView 
+            android:id="@+id/trainPartScroll"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentBottom="true" >
+             
+            <LinearLayout
+	             android:id="@+id/trainPartCollection"
+	             android:layout_width="wrap_content"
+	             android:layout_height="100dp"
+	           	 android:layout_marginTop="5dp"
+			     android:background="#AAAAAA"
+	             android:orientation="horizontal" >
+	                
+            </LinearLayout>
+        </HorizontalScrollView>
+         -->
+        
         
         <org.lucasr.twowayview.TwoWayView 
 		     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -44,10 +64,11 @@
 		     android:layout_marginTop="5dp"
 		     android:layout_alignParentBottom="true"
 		     android:drawSelectorOnTop="false"
-		     android:background="#EEEEEE"
+		     android:background="#AAAAAA"
 		     tools:context=".MainActivity" >
 	     </org.lucasr.twowayview.TwoWayView>
-        
+         
+         
         <TextView 
             android:id="@+id/trainBuilder_trainPartsTitle"
             android:layout_width="fill_parent"
@@ -62,7 +83,18 @@
             android:layout_alignParentTop="true"
             android:layout_above="@id/trainBuilder_trainPartsTitle"
             android:background="@drawable/trainbuilder_background" >
-            
+			
+            <LinearLayout
+                android:id="@+id/trainContainer"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="190dp"
+                android:orientation="horizontal" >
+                
+            </LinearLayout>
+             
         </RelativeLayout>
         
     </RelativeLayout>
@@ -75,19 +107,29 @@
         android:orientation="horizontal"
         style="@android:attr/buttonBarStyle" >
         
-        <Button android:id="@+id/homeButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
+        <Button 
+            android:id="@+id/homeButton" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
             android:text="@string/menu_home"
             android:onClick="goToHome"
             style="@android:attr/buttonBarButtonStyle" />
         
-        <Button android:id="@+id/rebuildButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
+        <Button 
+            android:id="@+id/rebuildButton" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
             android:text="@string/button_rebuild"
-            style="@android:attr/buttonBarButtonStyle" />
+            style="@android:attr/buttonBarButtonStyle"
+            android:onClick="rebuildTrain" />
         
-        <Button android:id="@+id/trainBuilderButton" android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" android:layout_weight="1" 
+        <Button 
+            android:id="@+id/trainBuilderButton" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
             android:text="@string/button_play"
             style="@android:attr/buttonBarButtonStyle" />
         

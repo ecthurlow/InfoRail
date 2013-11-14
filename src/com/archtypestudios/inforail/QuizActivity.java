@@ -6,13 +6,16 @@ import java.util.List;
 import com.archtypestudios.inforail.model.Answer;
 import com.archtypestudios.inforail.model.Question;
 import com.archtypestudios.inforail.repositories.Repository;
+import com.archtypestudios.inforail.themes.InfoRailActivity;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,6 +23,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class QuizActivity extends Activity {
+	
+	protected TextView title;
+	protected ImageView icon;
 	
 	int id;
 	String name;
@@ -36,9 +42,18 @@ public class QuizActivity extends Activity {
 	Repository repository;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+		
 		setContentView(R.layout.activity_quiz);
+		
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,    R.layout.window_title);
+		
+		title = (TextView) findViewById(R.id.title);
+        icon  = (ImageView) findViewById(R.id.icon);
+        icon.setImageResource(R.drawable.ic_launcher);
 		
 		repository = new Repository(this);
 		
@@ -46,6 +61,8 @@ public class QuizActivity extends Activity {
 		Bundle bundle = getIntent().getExtras();
 		id = bundle.getInt("id");
 		name = bundle.getString("name");
+		
+		this.title.setText(R.string.menu_quiz + " - " + name);
 		
 		//Get elements
 		questionTextView = (TextView)findViewById(R.id.quizQuestion);
@@ -117,6 +134,7 @@ public class QuizActivity extends Activity {
 			RadioButton rb = new RadioButton(this);
 			rb.setText(answer.getTextStringId());
 			rb.setId(answer.getId());
+			rb.setButtonDrawable(R.drawable.button_radio);
 			answerGroup.addView(rb);
 		}
 		
