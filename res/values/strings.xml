@@ -18,7 +18,8 @@
     
     <string name="headerTitle">InfoRail - </string>
     
-    
+    <!-- Selected Train Activity -->
+    <string name="ok">OK</string>
     
     <!-- Quiz Activity -->
     

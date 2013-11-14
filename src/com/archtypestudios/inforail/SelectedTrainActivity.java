@@ -59,20 +59,7 @@ public class SelectedTrainActivity extends Activity {
 		TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
 		content = (RelativeLayout) findViewById(R.id.selectedActivity_Content);
 		
-		//View Tree Stuff
-		/*
-		content.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener()
-		{
-		    @Override
-		    public void onGlobalLayout()
-		    {
-		        // gets called after layout has been done but before display.
-		        content.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-		    // get width and height
-		    }
-		});
-		*/
+		
 		//Set Element Values
 		trainNameTextView.setText(name);
 		
@@ -109,6 +96,9 @@ public class SelectedTrainActivity extends Activity {
 						TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
 						int trainInfoIndex = v.getId()-1;
 						trainNameTextView.setText(trainInfos.get(trainInfoIndex).getTextStringId());
+						
+						ImageView factIcon = (ImageView) v;
+						factIcon.setBackgroundResource(R.drawable.fact_tap);
 					}
 				});
 				
