@@ -9,16 +9,22 @@ import com.archtypestudios.inforail.repositories.Repository;
 import com.archtypestudios.inforail.themes.InfoRailActivity;
 
 import android.os.Bundle;
+import android.R.anim;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -152,57 +158,95 @@ public class QuizActivity extends Activity {
 		title.setText(R.string.quiz_resutlts);
 		contentLayout.addView(title);
 		
+		//Make a ScrollView
+		ScrollView scrollView = new ScrollView(this);
+		scrollView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		//scrollView.setBackgroundColor(Color.parseColor("#FF0000"));
+		
+		LinearLayout allResultsContainer = new LinearLayout(this);
+		allResultsContainer.setOrientation(LinearLayout.VERTICAL);
+		LinearLayout.LayoutParams allResultsContainerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+		
+		allResultsContainer.setLayoutParams(allResultsContainerParams);
+		
 		//Go through answers
 		for (Integer selectedAnswer: selectedAnswers) {
-			//create linear layout
+			
+			//create answer LinearLayout container
 			LinearLayout answerLayout = new LinearLayout(this);
+			//answerLayout.setBackgroundColor(Color.parseColor("#00FF00"));
 			answerLayout.setOrientation(LinearLayout.VERTICAL);
-
+			
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-			params.setMargins(0, 20, 0, 0);
+			params.setMargins(0, 40, 0, 0);
 			answerLayout.setLayoutParams(params);
 			
 			//Get answer from repository
 			Answer answer = repository.answers.getById(selectedAnswer);
 			
-			//show question
+			//create questionTextView
 			TextView resultQuestion = new TextView(this);
+			//resultQuestion.setBackgroundColor(Color.parseColor("#0000FF"));
+			resultQuestion.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 			resultQuestion.setText(answer.getQuestion().getTextStringId());
 			answerLayout.addView(resultQuestion);
 			
-			//show answer
+			//create answerTextView
 			TextView resultAnswer = new TextView(this);
 			resultAnswer.setText(answer.getTextStringId());
-			answerLayout.addView(resultAnswer);
 			
-			//Add correct or incorrect
-			TextView result = new TextView(this);
+			LinearLayout.LayoutParams resultAnswerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+			resultAnswerParams.gravity = Gravity.BOTTOM;
+			resultAnswerParams.setMargins(0, 0, 10, 0);
+			
+			resultAnswer.setLayoutParams(resultAnswerParams);
+			
+			//create answerIcon ImageView
+			ImageView resultIcon = new ImageView(this);
+			
+			LinearLayout.LayoutParams resultIconParams = new LinearLayout.LayoutParams(20, 20);
+			resultIconParams.gravity = Gravity.BOTTOM;
+			
+			resultIcon.setLayoutParams(resultIconParams);
+			
+			//Add correct or incorrect Icon
 			if (answer.getIsCorrect() == true) {
-				result.setText(R.string.correct);
-				answerLayout.addView(result, params);
+				
+				resultIcon.setImageResource(R.drawable.result_check);
 			}
 			
 			else {
-				result.setText(R.string.incorrect);
-				answerLayout.addView(result);
 				
+				resultIcon.setImageResource(R.drawable.result_x);
 			}
 			
-			contentLayout.addView(answerLayout);
+			LinearLayout resultContainer = new LinearLayout(this);
+			resultContainer.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+			resultContainer.addView(resultAnswer);
+			resultContainer.addView(resultIcon);
 			
-			Button nextQuestionButton = (Button)findViewById(R.id.nextQuestionButton);
-			nextQuestionButton.setText(R.string.button_retryQuiz);
-			nextQuestionButton.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					Intent intent = new Intent(QuizActivity.this, QuizActivity.class);
-					intent.putExtra("id", id);
-					intent.putExtra("name", name);
-					startActivity(intent);
-				}
-			});
+			answerLayout.addView(resultContainer);
+			
+			allResultsContainer.addView(answerLayout);
+			
 		}
+		
+		scrollView.addView(allResultsContainer);
+		
+		Button nextQuestionButton = (Button)findViewById(R.id.nextQuestionButton);
+		nextQuestionButton.setText(R.string.button_retryQuiz);
+		nextQuestionButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(QuizActivity.this, QuizActivity.class);
+				intent.putExtra("id", id);
+				intent.putExtra("name", name);
+				startActivity(intent);
+			}
+		});
+		
+		contentLayout.addView(scrollView);
 		
 	}
 	
@@ -221,6 +265,18 @@ public class QuizActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.quiz, menu);
 		return true;
+	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+	    super.onConfigurationChanged(newConfig);
+
+	    if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+	        setContentView(R.layout.activity_quiz);
+
+	    } else {
+	        setContentView(R.layout.activity_quiz);
+	    }
 	}
 
 }

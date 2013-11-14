@@ -25,7 +25,8 @@
         </activity>
         <activity
             android:name="com.archtypestudios.inforail.QuizActivity"
-            android:label="@string/title_activity_quiz" >
+            android:label="@string/title_activity_quiz"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
         <activity
             android:name="com.archtypestudios.inforail.SelectedTrainActivity"

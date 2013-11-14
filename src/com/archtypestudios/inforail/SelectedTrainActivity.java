@@ -82,7 +82,7 @@ public class SelectedTrainActivity extends Activity {
 				infoIcon.setId(trainInfo.getId());
 				infoIcon.setImageResource(R.drawable.fact_normal);
 				
-				RelativeLayout.LayoutParams params = getFactIconParams(40, trainInfo.getxPosition(), trainInfo.getyPosition());
+				RelativeLayout.LayoutParams params = getFactIconParams(80, trainInfo.getxPosition(), trainInfo.getyPosition());
 				
 				infoIcon.setLayoutParams(params);
 				
