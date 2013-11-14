@@ -31,7 +31,7 @@
     <!-- InfoRail Theme -->
     <style name="InfoRailTheme" parent="android:Theme">
         <item name="android:windowBackground">@drawable/inforail_bg</item>
-        <item name="android:windowTitleSize">35dp</item>
+        <item name="android:windowTitleSize">70dp</item>
         <item name="android:windowTitleBackgroundStyle">@style/InfoRailWindowTitleBackground</item>
     </style>
     

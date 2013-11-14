@@ -10,18 +10,19 @@ import android.widget.TextView;
 public class InfoRailActivity extends Activity {
 	
 	protected TextView title;
+	protected TextView subTitle;
 
-    @Override
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-
+        boolean titled = requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         setContentView(R.layout.activity_home);
-
-        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.header);
-
-        title = (TextView) findViewById(R.id.title);
-        title.setText(R.string.app_name);
+        if(titled){
+        	getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.header);
+        	
+        	title = (TextView) findViewById(R.id.title);
+        	subTitle = (TextView) findViewById(R.id.subtitle);
+        	
+        }
     }
 }
