@@ -29,7 +29,7 @@
 		     android:layout_marginTop="5dp"
 		     android:layout_alignParentBottom="true"
 		     android:drawSelectorOnTop="false"
-		     android:background="#AAAAAA"
+		     android:background="@drawable/train_builder_list_bg"
 		     tools:context=".MainActivity" >
 	     </org.lucasr.twowayview.TwoWayView>
          
@@ -55,7 +55,7 @@
                 android:layout_height="45dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="175dp"
+                android:layout_marginTop="180dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:orientation="horizontal" >
@@ -98,6 +98,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
 	        android:text="@string/button_play"
+	        android:onClick="playTrain"
 	        style="@style/train_button" />
         
     </LinearLayout>

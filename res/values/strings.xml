@@ -30,6 +30,7 @@
     
     <!-- Train Builder Activity -->
     <string name="trainBuilder_trainPartsTitle">Your Train Cars</string>
+    <string name="noTrainPartsInBuilder">No train to animate</string>
     
     <!-- Button Names -->
     <string name="menu_achievements">Achievements</string>

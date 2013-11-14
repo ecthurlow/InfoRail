@@ -9,6 +9,7 @@ import com.archtypestudios.inforail.adapters.TrainPartAdapter;
 import com.archtypestudios.inforail.model.TrainPart;
 import com.archtypestudios.inforail.repositories.Repository;
 import com.archtypestudios.inforail.themes.InfoRailActivity;
+import com.archtypestudios.inforail.widgets.MarqueeLayout;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -29,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TrainBuilderActivity extends Activity {
 	
@@ -79,6 +81,38 @@ public class TrainBuilderActivity extends Activity {
 	public void rebuildTrain(View view) {
 		Intent intent = new Intent(TrainBuilderActivity.this, TrainBuilderActivity.class);
 		startActivity(intent);
+	}
+	
+	public void playTrain(View view) {
+		
+		//check if anything is inside trainContainer
+		LinearLayout trainContainer = (LinearLayout) findViewById(R.id.trainContainer);
+		if (trainContainer.getChildCount() > 0) {
+			
+			MarqueeLayout animator = new MarqueeLayout(this);
+			animator.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
+			
+			//List<ImageView> parts = new ArrayList<ImageView>();
+			
+			//Put image views into marquee Layout
+			for (int i=0; i < trainContainer.getChildCount(); i++) {
+				ImageView part = (ImageView)trainContainer.getChildAt(i);
+				//parts.add(part);
+				trainContainer.removeView(part);
+				animator.addView(part);
+			}
+			
+			LayoutParams containerParams = trainContainer.getLayoutParams();
+			
+			animator.setLayoutParams(containerParams);
+			
+			//trainContainer.setLayoutParams(new LayoutParams(source));
+			
+		}
+		
+		else {
+			Toast.makeText(context, getResources().getText(R.string.noTrainPartsInBuilder), Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	public ArrayList<Integer> getTrainPartIds() {
@@ -164,10 +198,7 @@ public class TrainBuilderActivity extends Activity {
 					
 					owner.removeView(trainPart);
 					
-					//trainPart.setX(getPosX(trainPart.getDrawable(), event));
-					//trainPart.setY(getPosY(trainPart.getDrawable(), event));
 					
-					//buildingArea.addView(trainPart);
 					trainContainer.addView(trainPart);
 					trainPart.setVisibility(View.VISIBLE);
 				}

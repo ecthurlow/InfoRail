@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS "answer";
 CREATE TABLE "answer" ("id" INTEGER PRIMARY KEY  NOT NULL ,"textStringId" TEXT NOT NULL  DEFAULT (null), "question_id" INTEGER , "isCorrect" BOOL , FOREIGN KEY("question_id") REFERENCES question("id"));
-INSERT INTO "answer" VALUES(1,'1936',1,1);
+INSERT INTO "answer" VALUES(1,'Wood',1,1);
 INSERT INTO "answer" VALUES(2,'1900',1,0);
 INSERT INTO "answer" VALUES(3,'1970',1,0);
 INSERT INTO "answer" VALUES(4,'21 tons',2,1);
@@ -68,11 +68,11 @@ DROP TABLE IF EXISTS "trainInfo";
 CREATE TABLE "trainInfo" ("id" INTEGER PRIMARY KEY  NOT NULL ,"train_id" INTEGER , "textStringId" TEXT DEFAULT (null) ,"imageUrl" TEXT,"xPosition" FLOAT,"yPosition" FLOAT , FOREIGN KEY("train_id") 
 
 REFERENCES train("id"));
-INSERT INTO "trainInfo" VALUES(1,1,'A Caboose was the last car in a freight train.',NULL,NULL,NULL);
-INSERT INTO "trainInfo" VALUES(2,1,'The Caboose was used as a mobile living quarters for the train''s crew.',NULL,NULL,NULL);
-INSERT INTO "trainInfo" VALUES(3,1,'Wooden cabooses were used well into the 1960’s but were later replaced by steel ones.',NULL,NULL,NULL);
-INSERT INTO "trainInfo" VALUES(4,1,'The Caboose was often called the “crummy”.',NULL,NULL,NULL);
-INSERT INTO "trainInfo" VALUES(5,1,'The raised section of the caboose is called a cupola and was used to inspect the train.',NULL,NULL,NULL);
+INSERT INTO "trainInfo" VALUES(1,1,'A Caboose was the last car in a freight train.','fsdsfsdfds',0.849,0.634);
+INSERT INTO "trainInfo" VALUES(2,1,'The Caboose was used as a mobile living quarters for the train''s crew.','fdsfsfdsfds',0.242,0.42);
+INSERT INTO "trainInfo" VALUES(3,1,'Wooden cabooses were used well into the 1960’s but were later replaced by steel ones.','dsfdsfdsfsfds',0.424,0.572);
+INSERT INTO "trainInfo" VALUES(4,1,'The Caboose was often called the “crummy”.','sssss',0.666,0.42);
+INSERT INTO "trainInfo" VALUES(5,1,'The raised section of the caboose is called a cupola and was used to inspect the train.','ssssdfsdfefe',0.636,0.181);
 DROP TABLE IF EXISTS "trainPart";
 CREATE TABLE "trainPart" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "trainPartType" TEXT , "imageUrl" TEXT, "won" BOOL);
 INSERT INTO "trainPart" VALUES(1,'CAR',NULL,1);

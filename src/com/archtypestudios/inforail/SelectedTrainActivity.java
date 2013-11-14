@@ -9,6 +9,8 @@ import com.archtypestudios.inforail.themes.InfoRailActivity;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
@@ -56,12 +58,10 @@ public class SelectedTrainActivity extends Activity {
 		trainInfos = repository.trainInfo.getByTrain(id);
 		
 		//Get Elements
-		TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
 		content = (RelativeLayout) findViewById(R.id.selectedActivity_Content);
 		
 		
 		//Set Element Values
-		trainNameTextView.setText(name);
 		
 		String drawableName = "train" + id;
         
@@ -86,23 +86,37 @@ public class SelectedTrainActivity extends Activity {
 				
 				infoIcon.setLayoutParams(params);
 				
+				content.addView(infoIcon);
 				
 				infoIcon.setOnClickListener(new OnClickListener() {
 					
 					@Override
 					public void onClick(View v) {
 						
-						//set train info in a text view
-						TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
-						int trainInfoIndex = v.getId()-1;
-						trainNameTextView.setText(trainInfos.get(trainInfoIndex).getTextStringId());
+						int trainInfoId = v.getId();
 						
 						ImageView factIcon = (ImageView) v;
 						factIcon.setBackgroundResource(R.drawable.fact_tap);
+						
+						AlertDialog.Builder builder = new AlertDialog.Builder(SelectedTrainActivity.this);
+						
+						builder.setMessage((repository.trainInfo.getById(trainInfoId)).getTextStringId()).setNegativeButton("OK", new DialogInterface.OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								// TODO Auto-generated method stub
+								dialog.cancel();
+							}
+						});
+						
+						AlertDialog alert = builder.create();
+						
+						alert.show();
+						
 					}
 				});
 				
-				content.addView(infoIcon);
+				
 			}
 		}
 	}
