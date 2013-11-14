@@ -34,13 +34,16 @@
         <item name="android:windowTitleSize">65dp</item>
         <item name="android:windowTitleBackgroundStyle">@style/InfoRailWindowTitleBackground</item>
         <item name="android:textViewStyle">@style/inforail_text</item>
+        <item name="android:buttonStyle">@style/train_button</item>
+        <item name="android:radioButtonStyle">@style/radio_button</item>
     </style>
     
     
     <!-- Train Button Style -->
-    <style name="train_button">
+    <style name="train_button" parent="@android:style/Widget.Button">
        	<item name="android:layout_width" >fill_parent</item>
 	    <item name="android:layout_height" >wrap_content</item>
+	    <item name="android:background">@drawable/train_button</item>
 	    <item name="android:textColor" >#ffffff</item>
 	    <item name="android:gravity" >center</item>
 	    <item name="android:layout_margin" >3dp</item>
@@ -51,6 +54,12 @@
 	    <item name="android:shadowDy" >1</item>
 	    <item name="android:shadowRadius" >2</item>
         
+    </style>
+    
+    <!--  Radio Button Style -->
+    <style name="radio_button" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/button_radio</item>
+        <item name="android:paddingLeft">50dp</item>
     </style>
     
     <!-- Text Style -->

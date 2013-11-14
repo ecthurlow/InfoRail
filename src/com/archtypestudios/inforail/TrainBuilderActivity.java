@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnDragListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.LinearLayout;
@@ -45,7 +46,12 @@ public class TrainBuilderActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         
-        setContentView(R.layout.activity_train_builder);
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+		setContentView(R.layout.activity_train_builder);
+        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.header);
+        
+        TextView subtitle = (TextView)findViewById(R.id.subtitle);
+        subtitle.setText(R.string.subtitle_trainBuilder);
 		
 		repository = new Repository(this);
 		//Get all user won train parts
@@ -60,10 +66,19 @@ public class TrainBuilderActivity extends Activity {
 		
 		trainPartCollection.setAdapter(adapter);
 		
+		//height : 535 px
+		//distance: 313 px
+		
+		
+		
         
         RelativeLayout buildingArea = (RelativeLayout) findViewById(R.id.buildingArea);
         buildingArea.setOnDragListener(new MyDragListener());
-		
+	}
+	
+	public void rebuildTrain(View view) {
+		Intent intent = new Intent(TrainBuilderActivity.this, TrainBuilderActivity.class);
+		startActivity(intent);
 	}
 	
 	public ArrayList<Integer> getTrainPartIds() {

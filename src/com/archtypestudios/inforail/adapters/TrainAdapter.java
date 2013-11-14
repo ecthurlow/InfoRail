@@ -39,7 +39,6 @@ public class TrainAdapter extends ArrayAdapter<Train> {
             
             holder = new TrainHolder();
             holder.imgIcon = (ImageView)row.findViewById(R.id.imgIcon);
-            holder.txtTitle = (TextView)row.findViewById(R.id.txtTitle);
             
             row.setTag(holder);
         }
@@ -49,7 +48,6 @@ public class TrainAdapter extends ArrayAdapter<Train> {
         }
         
         Train train = data.get(position);
-        holder.txtTitle.setText(train.getNameStringId());
         
         String drawableName = "train_icon" + train.getId();
         
@@ -64,6 +62,5 @@ public class TrainAdapter extends ArrayAdapter<Train> {
     static class TrainHolder
     {
         ImageView imgIcon;
-        TextView txtTitle;
     }
 }

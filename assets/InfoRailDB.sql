@@ -36,10 +36,10 @@ INSERT INTO "answer" VALUES(33,'United Statres Wind Tunnels',11,0);
 DROP TABLE IF EXISTS "question";
 CREATE TABLE "question" ("id" INTEGER PRIMARY KEY  NOT NULL ,"train_id" INTEGER , "textStringId" TEXT DEFAULT (null) ,"questionType_id" INTEGER, FOREIGN KEY("train_id") REFERENCES 
 train("id") , FOREIGN KEY("questionType_id") REFERENCES questionType("id"));
-INSERT INTO "question" VALUES(1,1,'What year was the Canadian Royal built? ',1);
-INSERT INTO "question" VALUES(2,1,'How much coal could the Canadian Royal carry? ',1);
-INSERT INTO "question" VALUES(3,1,'Steam Engines were used to move________ trains overnight trains between Montreal and Toronto.',2);
-INSERT INTO "question" VALUES(4,1,'Steam Engines could reach a speed of up to:',1);
+INSERT INTO "question" VALUES(1,1,'A typical caboose was made of?',1);
+INSERT INTO "question" VALUES(2,1,'The caboose was used well into the:',1);
+INSERT INTO "question" VALUES(3,1,'A caboose could also be called a:',2);
+INSERT INTO "question" VALUES(4,1,'The raised section of the caboose was used for:',1);
 INSERT INTO "question" VALUES(5,2,'A typical caboose was made of? ',1);
 INSERT INTO "question" VALUES(6,2,'The cabooses were made to be used on?',2);
 INSERT INTO "question" VALUES(7,2,'The caboose was used well into the? ',1);
@@ -58,32 +58,39 @@ DROP TABLE IF EXISTS "train";
 CREATE TABLE "train" ("id" INTEGER PRIMARY KEY  NOT NULL ,"nameStringId" TEXT DEFAULT (null) ,"iconUrl" TEXT,"imageUrl" TEXT,"trainPart_id" INTEGER , FOREIGN KEY("trainPart_id") REFERENCES trainPart
 
 ("id"));
-INSERT INTO "train" VALUES(1,'Canadian Royal',NULL,NULL,NULL);
-INSERT INTO "train" VALUES(2,'Caboose',NULL,NULL,NULL);
-INSERT INTO "train" VALUES(3,'Northern cn 6400',NULL,NULL,NULL);
-INSERT INTO "train" VALUES(4,'REDACTED',NULL,NULL,NULL);
+INSERT INTO "train" VALUES(1,'CN Caboose',NULL,NULL,NULL);
+INSERT INTO "train" VALUES(2,'CP 2858',NULL,NULL,NULL);
+INSERT INTO "train" VALUES(3,'CP 926',NULL,NULL,NULL);
+INSERT INTO "train" VALUES(4,'Business Car',NULL,NULL,NULL);
+INSERT INTO "train" VALUES(5,'CN 6400',NULL,NULL,NULL);
+INSERT INTO "train" VALUES(6,'CP3100',NULL,NULL,NULL);
 DROP TABLE IF EXISTS "trainInfo";
 CREATE TABLE "trainInfo" ("id" INTEGER PRIMARY KEY  NOT NULL ,"train_id" INTEGER , "textStringId" TEXT DEFAULT (null) ,"imageUrl" TEXT,"xPosition" FLOAT,"yPosition" FLOAT , FOREIGN KEY("train_id") 
 
 REFERENCES train("id"));
-INSERT INTO "trainInfo" VALUES(1,1,'The shiny thing does interesting stuff',NULL,NULL,NULL);
+INSERT INTO "trainInfo" VALUES(1,1,'A Caboose was the last car in a freight train.',NULL,NULL,NULL);
+INSERT INTO "trainInfo" VALUES(2,1,'The Caboose was used as a mobile living quarters for the train''s crew.',NULL,NULL,NULL);
+INSERT INTO "trainInfo" VALUES(3,1,'Wooden cabooses were used well into the 1960’s but were later replaced by steel ones.',NULL,NULL,NULL);
+INSERT INTO "trainInfo" VALUES(4,1,'The Caboose was often called the “crummy”.',NULL,NULL,NULL);
+INSERT INTO "trainInfo" VALUES(5,1,'The raised section of the caboose is called a cupola and was used to inspect the train.',NULL,NULL,NULL);
 DROP TABLE IF EXISTS "trainPart";
 CREATE TABLE "trainPart" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "trainPartType" TEXT , "imageUrl" TEXT, "won" BOOL);
 INSERT INTO "trainPart" VALUES(1,'CAR',NULL,1);
-INSERT INTO "trainPart" VALUES(2,'CAR',NULL,1);
-INSERT INTO "trainPart" VALUES(3,'CAR',NULL,1);
+INSERT INTO "trainPart" VALUES(2,'CAR',NULL,0);
+INSERT INTO "trainPart" VALUES(3,'CAR',NULL,0);
 INSERT INTO "trainPart" VALUES(4,'CAR',NULL,0);
 INSERT INTO "trainPart" VALUES(5,'CAR',NULL,0);
 INSERT INTO "trainPart" VALUES(6,'CAR',NULL,0);
 INSERT INTO "trainPart" VALUES(7,'CAR',NULL,0);
-INSERT INTO "trainPart" VALUES(8,'CAR',NULL,0);
+INSERT INTO "trainPart" VALUES(8,'CAR',NULL,1);
 INSERT INTO "trainPart" VALUES(9,'CAR',NULL,0);
 INSERT INTO "trainPart" VALUES(10,'CAR',NULL,0);
-INSERT INTO "trainPart" VALUES(11,'CAR',NULL,0);
+INSERT INTO "trainPart" VALUES(11,'CAR',NULL,1);
 INSERT INTO "trainPart" VALUES(12,'CAR',NULL,0);
-INSERT INTO "trainPart" VALUES(13,'CAR',NULL,0);
-INSERT INTO "trainPart" VALUES(14,'ENGINE',NULL,1);
-INSERT INTO "trainPart" VALUES(15,'ENGINE',NULL,1);
+INSERT INTO "trainPart" VALUES(13,'CAR',NULL,'1
+1');
+INSERT INTO "trainPart" VALUES(14,'ENGINE',NULL,0);
+INSERT INTO "trainPart" VALUES(15,'ENGINE',NULL,0);
 INSERT INTO "trainPart" VALUES(16,'ENGINE',NULL,0);
-INSERT INTO "trainPart" VALUES(17,'ENGINE',NULL,0);
-INSERT INTO "trainPart" VALUES(18,'ENGINE',NULL,0);
+INSERT INTO "trainPart" VALUES(17,'ENGINE',NULL,1);
+INSERT INTO "trainPart" VALUES(18,'ENGINE',NULL,1);

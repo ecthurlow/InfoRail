@@ -21,12 +21,18 @@
 	        android:gravity="center_horizontal"
 	        android:layout_marginTop="20dp"
 	        android:text="@string/quiz_instructions" />
-	
+	<LinearLayout 
+	    android:id="@+id/answerContainer"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_horizontal" >
+	    
+	</LinearLayout>
 	    <RadioGroup
 	        android:id="@+id/radio_answerGroup"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:gravity="center_horizontal"
 	        android:layout_marginLeft="0dp"
 	        android:layout_marginTop="30dp" >
 	

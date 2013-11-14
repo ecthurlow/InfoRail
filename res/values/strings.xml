@@ -9,14 +9,19 @@
     <string name="title_activity_quiz">QuizActivity</string>
     <string name="quiz_instructions">Tap the circle beside the correct answer and click the next question.</string>
     <string name="title_activity_train_builder">TrainBuilderActivity</string>
-    <string name="trainBuilder_instructions">Drag your train cars into the building window to build your train and press play to watch it run.</string>
     
-    <string name="headerTitle">InfoRail - </string>
+    <!-- Subtitles -->
     <string name="subtitle_splash">Welcome Abord!</string>
     <string name="subtitle_home">Select a train</string>
+    <string name="subtitle_trainBuilder">Drag and drop your train parts to build your train.</string>
+    <string name="quiz">Quiz</string>
+    
+    <string name="headerTitle">InfoRail - </string>
+    
+    
     
     <!-- Quiz Activity -->
-    <string name="quiz">Quiz</string>
+    
     <string name="noQuestionsAvailable">Sorry, there are currently no questions available for this train.</string>
     <string name="quiz_resutlts">Your Results</string>
     <string name="correct">Correct!</string>

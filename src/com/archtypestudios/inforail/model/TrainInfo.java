@@ -19,10 +19,10 @@ public class TrainInfo {
 	private String imageUrl;
 	
 	@DatabaseField
-	private int xPosition;
+	private float xPosition;
 	
 	@DatabaseField
-	private int yPosition;
+	private float yPosition;
 
 	public int getId() {
 		return id;
@@ -56,7 +56,7 @@ public class TrainInfo {
 		this.imageUrl = imageUrl;
 	}
 
-	public int getxPosition() {
+	public float getxPosition() {
 		return xPosition;
 	}
 
@@ -64,7 +64,7 @@ public class TrainInfo {
 		this.xPosition = xPosition;
 	}
 
-	public int getyPosition() {
+	public float getyPosition() {
 		return yPosition;
 	}
 

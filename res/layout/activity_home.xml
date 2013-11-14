@@ -13,36 +13,50 @@
         android:layout_alignParentBottom="true" 
         style="@android:attr/buttonBarStyle">
         
-        <Button 
-            android:id="@+id/achievementsButton" 
-            android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" 
-            android:layout_weight="1" 
-            android:text="@string/menu_achievements"
-            style="@android:attr/buttonBarButtonStyle" />
-        
-        <Button 
-            android:id="@+id/trainBuilderButton" 
-            android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" 
-            android:layout_weight="1" 
-            android:text="@string/menu_train_builder"
-            android:onClick="goToTrainBuilder"
-            style="@android:attr/buttonBarButtonStyle" />
-        
     </LinearLayout>
     
-    <GridView 
-        android:id="@+id/train_grid_view"
-        android:layout_above="@id/footer"
-        android:layout_alignParentTop="true"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:columnWidth="180dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="columnWidth"
-        android:gravity="center" />
+	<LinearLayout
+	    android:id="@+id/content"
+	    android:orientation="horizontal"
+	    android:layout_alignParentTop="true"
+	    android:layout_above="@id/footer"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+	     
+	    <GridView 
+	        android:id="@+id/train_grid_view"
+	        android:layout_width="0dip"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:columnWidth="200dp"
+	        android:numColumns="auto_fit"
+	        android:verticalSpacing="10dp"
+	        android:horizontalSpacing="10dp"
+	        android:stretchMode="columnWidth"
+	        android:gravity="center" />
+	    
+	    <LinearLayout
+	        android:id="@+id/rightContent"
+	        android:orientation="vertical"
+	        android:layout_width="wrap_content"
+	        android:layout_height="fill_parent" >
+	        
+	        <ImageView 
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="1"
+	            android:src="@drawable/science_tech_logo" />
+	        
+	         <Button 
+	            android:id="@+id/trainBuilderButton" 
+	            android:layout_width="fill_parent" 
+	            android:layout_height="wrap_content" 
+	            android:text="@string/menu_train_builder"
+	            android:onClick="goToTrainBuilder"
+	            style="@style/train_button" />
+	    </LinearLayout>
+	    
+	</LinearLayout>
+    
     
 </RelativeLayout>

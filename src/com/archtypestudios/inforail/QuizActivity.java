@@ -127,7 +127,7 @@ public class QuizActivity extends Activity {
 			RadioButton rb = new RadioButton(this);
 			rb.setText(answer.getTextStringId());
 			rb.setId(answer.getId());
-			rb.setButtonDrawable(R.drawable.button_radio);
+			//rb.setButtonDrawable(R.drawable.button_radio);
 			answerGroup.addView(rb);
 		}
 		

@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -26,7 +28,9 @@ public class SelectedTrainActivity extends Activity {
 	
 	protected int id;
 	protected String name;
+	protected List<TrainInfo> trainInfos;
 	
+	protected RelativeLayout content;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,10 +42,6 @@ public class SelectedTrainActivity extends Activity {
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.header);
         
         TextView subtitle = (TextView)findViewById(R.id.subtitle);
-        
-		
-		
-		
 		
 		repository = new Repository(this);
 		
@@ -53,12 +53,26 @@ public class SelectedTrainActivity extends Activity {
 		
 		subtitle.setText(name);
 		
-		final List<TrainInfo> trainInfos = repository.trainInfo.getByTrain(id);
+		trainInfos = repository.trainInfo.getByTrain(id);
 		
 		//Get Elements
 		TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
-		RelativeLayout content = (RelativeLayout) findViewById(R.id.selectedActivity_Content);
+		content = (RelativeLayout) findViewById(R.id.selectedActivity_Content);
 		
+		//View Tree Stuff
+		/*
+		content.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener()
+		{
+		    @Override
+		    public void onGlobalLayout()
+		    {
+		        // gets called after layout has been done but before display.
+		        content.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+		    // get width and height
+		    }
+		});
+		*/
 		//Set Element Values
 		trainNameTextView.setText(name);
 		
@@ -67,29 +81,52 @@ public class SelectedTrainActivity extends Activity {
         int drawableId = getResources().getIdentifier(drawableName, "drawable", getPackageName());
         content.setBackgroundResource(drawableId);
         
-        for (TrainInfo trainInfo : trainInfos) {
-			ImageView infoIcon = new ImageView(this);
-			infoIcon.setId(trainInfo.getId());
-			infoIcon.setImageResource(R.drawable.ic_launcher);
-			
-			infoIcon.setLayoutParams(new ViewGroup.LayoutParams(40, 40));
-			
-			
-			infoIcon.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					
-					//set train info in a text view
-					TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
-					int trainInfoIndex = v.getId()-1;
-					trainNameTextView.setText(trainInfos.get(trainInfoIndex).getTextStringId());
-				}
-			});
-			
-			content.addView(infoIcon);
-		}
+        
 		
+	}
+	
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		
+		if(hasFocus) {
+			for (TrainInfo trainInfo : trainInfos) {
+				ImageView infoIcon = new ImageView(this);
+				infoIcon.setId(trainInfo.getId());
+				infoIcon.setImageResource(R.drawable.fact_normal);
+				
+				RelativeLayout.LayoutParams params = getFactIconParams(40, trainInfo.getxPosition(), trainInfo.getyPosition());
+				
+				infoIcon.setLayoutParams(params);
+				
+				
+				infoIcon.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						
+						//set train info in a text view
+						TextView trainNameTextView = (TextView) findViewById(R.id.selected_train_name);
+						int trainInfoIndex = v.getId()-1;
+						trainNameTextView.setText(trainInfos.get(trainInfoIndex).getTextStringId());
+					}
+				});
+				
+				content.addView(infoIcon);
+			}
+		}
+	}
+	
+	public RelativeLayout.LayoutParams getFactIconParams (int size, float pX, float pY) {
+		
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(size, size);
+		
+		int leftMargin = (int) (content.getWidth() * pX);
+		int topMargin = (int) (content.getHeight() * pY);
+		
+		params.setMargins(leftMargin, topMargin, 0, 0);
+		
+		return params;
 	}
 	
 	public void goToHome(View view) {
