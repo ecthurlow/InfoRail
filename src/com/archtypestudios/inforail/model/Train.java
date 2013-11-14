@@ -12,12 +12,6 @@ public class Train {
 	@DatabaseField
 	private String nameStringId;
 	
-	@DatabaseField
-	private String iconUrl;
-	
-	@DatabaseField
-	private String imageUrl;
-	
 	@DatabaseField(foreign=true, foreignAutoRefresh=true)
 	private TrainPart trainPart;
 
@@ -35,22 +29,6 @@ public class Train {
 
 	public void setNameStringId(String nameStringId) {
 		this.nameStringId = nameStringId;
-	}
-
-	public String getIconUrl() {
-		return iconUrl;
-	}
-
-	public void setIconUrl(String iconUrl) {
-		this.iconUrl = iconUrl;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
 	}
 
 	public TrainPart getTrainPart() {

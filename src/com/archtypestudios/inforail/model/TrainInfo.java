@@ -16,9 +16,6 @@ public class TrainInfo {
 	private String textStringId;
 	
 	@DatabaseField
-	private String imageUrl;
-	
-	@DatabaseField
 	private float xPosition;
 	
 	@DatabaseField
@@ -46,14 +43,6 @@ public class TrainInfo {
 
 	public void setTextStringId(String textStringId) {
 		this.textStringId = textStringId;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
 	}
 
 	public float getxPosition() {

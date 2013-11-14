@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.archtypestudios.inforail.model.Answer;
 import com.archtypestudios.inforail.model.Question;
+import com.archtypestudios.inforail.model.TrainPart;
 import com.archtypestudios.inforail.repositories.Repository;
 import com.archtypestudios.inforail.themes.InfoRailActivity;
 
@@ -116,6 +117,7 @@ public class QuizActivity extends Activity {
 	public void loadNextQuestion() {
 		
 		//Remove old radio buttons from group
+		answerGroup.clearCheck();
 		answerGroup.removeAllViewsInLayout();
 		
 		//Get next question
@@ -148,6 +150,9 @@ public class QuizActivity extends Activity {
 	
 	public void finishQuiz() {
 		Toast.makeText(this, "Quiz Finished", Toast.LENGTH_SHORT).show();
+		
+		int score = 0;
+		int total = questions.size();
 		
 		//Remove instructions, questions, and answers
 		LinearLayout contentLayout = (LinearLayout)findViewById(R.id.quiz_content);
@@ -211,7 +216,7 @@ public class QuizActivity extends Activity {
 			
 			//Add correct or incorrect Icon
 			if (answer.getIsCorrect() == true) {
-				
+				score++;
 				resultIcon.setImageResource(R.drawable.result_check);
 			}
 			
@@ -248,6 +253,17 @@ public class QuizActivity extends Activity {
 		
 		contentLayout.addView(scrollView);
 		
+
+		//Check for perfect score
+		if (score == total) {
+			winTrainPart();
+		}
+		
+	}
+	
+	public void winTrainPart() {
+		
+		//List<TrainPart> wonTrainParts = repository.trainParts.getByTrain();
 	}
 	
 	public void goToHome(View view) {

@@ -6,6 +6,7 @@ import java.util.List;
 import android.database.SQLException;
 
 import com.archtypestudios.inforail.db.DatabaseHelper;
+import com.archtypestudios.inforail.model.TrainInfo;
 import com.archtypestudios.inforail.model.TrainPart;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
@@ -33,6 +34,16 @@ public class TrainPartRepository {
 			
 			PreparedQuery<TrainPart> pq = qb.prepare();
 			return trainPartDao.queryForFirst(pq);
+		} catch (java.sql.SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<TrainPart> getByTrain(Integer id) {
+		
+		try {
+			return trainPartDao.queryForEq("train_id", id);
 		} catch (java.sql.SQLException e) {
 			e.printStackTrace();
 		}

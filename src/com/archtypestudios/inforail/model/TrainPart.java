@@ -13,9 +13,17 @@ public class TrainPart {
 	@DatabaseField(dataType=DataType.ENUM_STRING)
 	private TrainPartType trainPartType;
 	
-	@DatabaseField
-	private String imageUrl;
+	@DatabaseField(foreign=true, foreignAutoRefresh=true)
+	private Train train;
 	
+	public Train getTrain() {
+		return train;
+	}
+
+	public void setTrain(Train train) {
+		this.train = train;
+	}
+
 	@DatabaseField
 	private Boolean won;
 
