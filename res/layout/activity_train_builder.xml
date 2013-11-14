@@ -7,22 +7,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".TrainBuilderActivity" >
-
-    
-    
-    <LinearLayout
-        android:id="@+id/header"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentTop="true" >
-        
-        <TextView
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/trainBuilder_instructions" />
-       
-    </LinearLayout>
     
     <RelativeLayout 
         android:id="@+id/trainBuilder_Content"
@@ -32,25 +16,6 @@
         android:layout_below="@id/header"
         android:layout_marginBottom="10dp"
         android:layout_centerInParent="true" >
-        <!-- 
-        <HorizontalScrollView 
-            android:id="@+id/trainPartScroll"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_alignParentBottom="true" >
-             
-            <LinearLayout
-	             android:id="@+id/trainPartCollection"
-	             android:layout_width="wrap_content"
-	             android:layout_height="100dp"
-	           	 android:layout_marginTop="5dp"
-			     android:background="#AAAAAA"
-	             android:orientation="horizontal" >
-	                
-            </LinearLayout>
-        </HorizontalScrollView>
-         -->
         
         
         <org.lucasr.twowayview.TwoWayView 
@@ -82,15 +47,17 @@
             android:layout_height="fill_parent"
             android:layout_alignParentTop="true"
             android:layout_above="@id/trainBuilder_trainPartsTitle"
-            android:background="@drawable/trainbuilder_background" >
+            android:background="@drawable/trainbuilder_bg" >
 			
             <LinearLayout
                 android:id="@+id/trainContainer"
                 android:layout_width="fill_parent"
-                android:layout_height="60dp"
+                android:layout_height="45dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="190dp"
+                android:layout_marginTop="175dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:orientation="horizontal" >
                 
             </LinearLayout>

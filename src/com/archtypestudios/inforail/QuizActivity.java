@@ -42,7 +42,11 @@ public class QuizActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.activity_quiz);
+        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.header);
+        
+        TextView subtitle = (TextView)findViewById(R.id.subtitle);
 		
 		repository = new Repository(this);
 		
@@ -50,6 +54,8 @@ public class QuizActivity extends Activity {
 		Bundle bundle = getIntent().getExtras();
 		id = bundle.getInt("id");
 		name = bundle.getString("name");
+		
+		subtitle.setText(name + " " + getString(R.string.quiz));
 		
 		//Get elements
 		questionTextView = (TextView)findViewById(R.id.quizQuestion);

@@ -33,7 +33,14 @@ public class SelectedTrainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.activity_selected_train);
+        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.header);
+        
+        TextView subtitle = (TextView)findViewById(R.id.subtitle);
+        
+		
+		
 		
 		
 		repository = new Repository(this);
@@ -43,6 +50,9 @@ public class SelectedTrainActivity extends Activity {
 		bundle = getIntent().getExtras();
 		id = bundle.getInt("id");
 		name = bundle.getString("name");
+		
+		subtitle.setText(name);
+		
 		final List<TrainInfo> trainInfos = repository.trainInfo.getByTrain(id);
 		
 		//Get Elements

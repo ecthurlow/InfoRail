@@ -31,8 +31,9 @@
     <!-- InfoRail Theme -->
     <style name="InfoRailTheme" parent="android:Theme">
         <item name="android:windowBackground">@drawable/inforail_bg</item>
-        <item name="android:windowTitleSize">70dp</item>
+        <item name="android:windowTitleSize">65dp</item>
         <item name="android:windowTitleBackgroundStyle">@style/InfoRailWindowTitleBackground</item>
+        <item name="android:textViewStyle">@style/inforail_text</item>
     </style>
     
     
@@ -51,5 +52,13 @@
 	    <item name="android:shadowRadius" >2</item>
         
     </style>
+    
+    <!-- Text Style -->
+    <style name="inforail_text" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+	</style>
 	
 </resources>

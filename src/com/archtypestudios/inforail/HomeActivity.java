@@ -37,8 +37,8 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_home);
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.header);
         
-        TextView title = (TextView)findViewById(R.id.title);
-        title.setText("Blah");
+        TextView subtitle = (TextView)findViewById(R.id.subtitle);
+        subtitle.setText(R.string.subtitle_home);
         
         repository = new Repository(this);
         

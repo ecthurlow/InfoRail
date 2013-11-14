@@ -102,11 +102,11 @@ public class TrainBuilderActivity extends Activity {
 		
 	class MyDragListener implements OnDragListener {
 		
-		Drawable enterShape = getResources().getDrawable(R.drawable.trainbuilder_background_over);
-		Drawable normalShape = getResources().getDrawable(R.drawable.trainbuilder_background);
+		Drawable enterShape = getResources().getDrawable(R.drawable.trainbuilder_bg_over);
+		Drawable normalShape = getResources().getDrawable(R.drawable.trainbuilder_bg);
 		
-        private int enterShapeId = getResources().getIdentifier("trainbuilder_background_over", "drawable", getPackageName());
-        private int normalShapeId = getResources().getIdentifier("trainbuilder_background", "drawable", getPackageName());
+        private int enterShapeId = getResources().getIdentifier("trainbuilder_bg_over", "drawable", getPackageName());
+        private int normalShapeId = getResources().getIdentifier("trainbuilder_bg", "drawable", getPackageName());
         
         private boolean canDrop = false;
         

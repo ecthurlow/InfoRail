@@ -65,36 +65,34 @@ public final class R {
         public static final int trainbuildingarea_shape_droptarget=0x7f020029;
     }
     public static final class id {
-        public static final int achievementsButton=0x7f080002;
-        public static final int action_settings=0x7f08001d;
-        public static final int buildingArea=0x7f080014;
-        public static final int buttons=0x7f08000f;
-        public static final int footer=0x7f080001;
-        public static final int header=0x7f08000b;
-        public static final int homeButton=0x7f080009;
-        public static final int home_instructions_textView=0x7f080000;
-        public static final int icon=0x7f080019;
-        public static final int imgIcon=0x7f080017;
-        public static final int nextQuestionButton=0x7f08000a;
-        public static final int quizButton=0x7f080010;
-        public static final int quizInstructions=0x7f080006;
-        public static final int quizQuestion=0x7f080007;
-        public static final int quiz_content=0x7f080005;
-        public static final int radio_answerGroup=0x7f080008;
-        public static final int rebuildButton=0x7f080016;
-        public static final int selectedActivity_Content=0x7f08000d;
-        public static final int selected_train_name=0x7f08000e;
-        public static final int selected_train_textView=0x7f08000c;
-        public static final int subtitle=0x7f08001c;
-        public static final int title=0x7f08001b;
-        public static final int titles=0x7f08001a;
-        public static final int trainBuilderButton=0x7f080003;
-        public static final int trainBuilder_Content=0x7f080011;
-        public static final int trainBuilder_trainPartsTitle=0x7f080013;
-        public static final int trainContainer=0x7f080015;
-        public static final int trainPartCollection=0x7f080012;
-        public static final int train_grid_view=0x7f080004;
-        public static final int txtTitle=0x7f080018;
+        public static final int achievementsButton=0x7f080001;
+        public static final int action_settings=0x7f08001b;
+        public static final int buildingArea=0x7f080012;
+        public static final int buttons=0x7f08000d;
+        public static final int footer=0x7f080000;
+        public static final int header=0x7f080009;
+        public static final int homeButton=0x7f080007;
+        public static final int icon=0x7f080017;
+        public static final int imgIcon=0x7f080015;
+        public static final int nextQuestionButton=0x7f080008;
+        public static final int quizButton=0x7f08000e;
+        public static final int quizQuestion=0x7f080005;
+        public static final int quiz_content=0x7f080004;
+        public static final int radio_answerGroup=0x7f080006;
+        public static final int rebuildButton=0x7f080014;
+        public static final int selectedActivity_Content=0x7f08000b;
+        public static final int selected_train_name=0x7f08000c;
+        public static final int selected_train_textView=0x7f08000a;
+        public static final int subtitle=0x7f08001a;
+        public static final int title=0x7f080019;
+        public static final int titles=0x7f080018;
+        public static final int trainBuilderButton=0x7f080002;
+        public static final int trainBuilder_Content=0x7f08000f;
+        public static final int trainBuilder_trainPartsTitle=0x7f080011;
+        public static final int trainContainer=0x7f080013;
+        public static final int trainPartCollection=0x7f080010;
+        public static final int train_grid_view=0x7f080003;
+        public static final int txtTitle=0x7f080016;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
@@ -115,42 +113,44 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int button_finishQuiz=0x7f050016;
-        public static final int button_nextQuestion=0x7f050015;
-        public static final int button_play=0x7f050019;
-        public static final int button_rebuild=0x7f050018;
-        public static final int button_retryQuiz=0x7f050017;
-        public static final int correct=0x7f05000e;
-        public static final int incorrect=0x7f05000f;
+        public static final int button_finishQuiz=0x7f050017;
+        public static final int button_nextQuestion=0x7f050016;
+        public static final int button_play=0x7f05001a;
+        public static final int button_rebuild=0x7f050019;
+        public static final int button_retryQuiz=0x7f050018;
+        /**  Content Descriptions 
+         */
+        public static final int contentDescription_icon=0x7f05001c;
+        public static final int correct=0x7f05000f;
+        public static final int headerTitle=0x7f050009;
+        public static final int incorrect=0x7f050010;
         public static final int main_instructions=0x7f050002;
         /**  Button Names 
          */
-        public static final int menu_achievements=0x7f050011;
-        public static final int menu_home=0x7f050014;
-        public static final int menu_quiz=0x7f050013;
-        public static final int menu_train_builder=0x7f050012;
+        public static final int menu_achievements=0x7f050012;
+        public static final int menu_home=0x7f050015;
+        public static final int menu_quiz=0x7f050014;
+        public static final int menu_train_builder=0x7f050013;
         /**   Messages 
          */
-        public static final int noAnswerSelected=0x7f05001a;
+        public static final int noAnswerSelected=0x7f05001b;
+        public static final int noQuestionsAvailable=0x7f05000d;
         /**  Quiz Activity 
          */
-        public static final int noQuestionsAvailable=0x7f05000c;
-        public static final int quiz_answer1=0x7f050009;
-        public static final int quiz_answer2=0x7f05000a;
-        public static final int quiz_answer3=0x7f05000b;
+        public static final int quiz=0x7f05000c;
         public static final int quiz_instructions=0x7f050006;
-        public static final int quiz_resutlts=0x7f05000d;
-        /**  Content Descriptions 
-         */
-        public static final int selected_train_image_info=0x7f05001b;
+        public static final int quiz_resutlts=0x7f05000e;
+        public static final int selected_train_image_info=0x7f05001d;
         public static final int seleted_train_instructions=0x7f050004;
+        public static final int subtitle_home=0x7f05000b;
+        public static final int subtitle_splash=0x7f05000a;
         public static final int title_activity_quiz=0x7f050005;
         public static final int title_activity_selected_train=0x7f050003;
         public static final int title_activity_train_builder=0x7f050007;
         public static final int trainBuilder_instructions=0x7f050008;
         /**  Train Builder Activity 
          */
-        public static final int trainBuilder_trainPartsTitle=0x7f050010;
+        public static final int trainBuilder_trainPartsTitle=0x7f050011;
     }
     public static final class style {
         /** 
@@ -188,6 +188,9 @@ public final class R {
         /**  Two Way View Theme 
          */
         public static final int TwoWayView=0x7f060002;
+        /**  Text Style 
+         */
+        public static final int inforail_text=0x7f060006;
         /**  Train Button Style 
          */
         public static final int train_button=0x7f060005;

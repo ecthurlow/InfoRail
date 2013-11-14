@@ -5,13 +5,13 @@
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
     android:orientation="horizontal"
-    android:layout_marginTop="20dp"
     android:paddingLeft="5dp"
     android:paddingTop="5dp"
     android:paddingBottom="5dp" >
     
     <ImageView 
         android:id="@+id/icon"
+        android:contentDescription="@string/contentDescription_icon"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:adjustViewBounds="true"
@@ -20,25 +20,29 @@
     
     <LinearLayout
         android:id="@+id/titles"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="fill_parent" >
         
+        <!-- android:textColor="#3CA9F2" -->
+
         <TextView
             android:id="@+id/title"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="#3CA9F2"
-            android:text="Title" />
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="5dp"
+            android:text="@string/headerTitle"
+            android:gravity="bottom"
+            android:textColor="#000000"
+            android:textSize="40sp" />
         
         <TextView
             android:id="@+id/subtitle"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="bottom"
             android:textColor="#FF0000"
-            android:text="Subtitle" />
+            android:textSize="35sp" />
         
     </LinearLayout>
 </LinearLayout>
