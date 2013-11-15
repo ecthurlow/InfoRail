@@ -14,7 +14,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
