@@ -17,22 +17,22 @@
         android:layout_marginBottom="10dp"
         android:layout_centerInParent="true" >
         
-        
-        <org.lucasr.twowayview.TwoWayView 
-		     xmlns:android="http://schemas.android.com/apk/res/android"
-		     xmlns:tools="http://schemas.android.com/tools"
-		     xmlns:app="http://schemas.android.com/apk/res-auto"
-		     android:id="@+id/trainPartCollection"
-		     style="@style/TwoWayView"
-		     android:layout_width="wrap_content"
-		     android:layout_height="100dp"
-		     android:layout_marginTop="5dp"
-		     android:layout_alignParentBottom="true"
-		     android:drawSelectorOnTop="false"
-		     android:background="@drawable/train_builder_list_bg"
-		     tools:context=".MainActivity" >
-	     </org.lucasr.twowayview.TwoWayView>
-         
+         <HorizontalScrollView 
+             android:id="@+id/trainPartCollection"
+             android:layout_width="fill_parent"
+             android:layout_height="100dp"
+             android:layout_alignParentBottom="true"
+             android:background="@drawable/train_builder_list_bg"  >
+             
+             <LinearLayout
+                 android:id="@+id/trainParts"
+                 android:orientation="horizontal"
+                 android:layout_width="wrap_content"
+                 android:layout_height="fill_parent" >
+                 
+             </LinearLayout>
+             
+         </HorizontalScrollView> 
          
         <TextView 
             android:id="@+id/trainBuilder_trainPartsTitle"
@@ -52,10 +52,10 @@
             <LinearLayout
                 android:id="@+id/trainContainer"
                 android:layout_width="fill_parent"
-                android:layout_height="45dp"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="180dp"
+                android:layout_marginTop="184dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:orientation="horizontal" >

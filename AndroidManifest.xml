@@ -12,7 +12,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/InfoRailTheme">
+        android:theme="@style/InfoRailTheme" >
+
         <!-- android:theme="@style/AppTheme" > -->
         <activity
             android:name="com.archtypestudios.inforail.HomeActivity"
@@ -25,8 +26,8 @@
         </activity>
         <activity
             android:name="com.archtypestudios.inforail.QuizActivity"
-            android:label="@string/title_activity_quiz"
-            android:configChanges="orientation|keyboardHidden|screenSize" >
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_quiz" >
         </activity>
         <activity
             android:name="com.archtypestudios.inforail.SelectedTrainActivity"
@@ -35,6 +36,15 @@
         <activity
             android:name="com.archtypestudios.inforail.TrainBuilderActivity"
             android:label="@string/title_activity_train_builder" >
+        </activity>
+        <activity
+            android:name="com.archtypestudios.inforail.SplashActivity"
+            android:label="@string/title_activity_splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

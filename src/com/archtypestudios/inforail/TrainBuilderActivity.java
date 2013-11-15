@@ -2,6 +2,7 @@ package com.archtypestudios.inforail;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.lucasr.twowayview.TwoWayView;
 
@@ -13,6 +14,7 @@ import com.archtypestudios.inforail.widgets.MarqueeLayout;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -24,8 +26,11 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.LinearLayout;
@@ -62,19 +67,45 @@ public class TrainBuilderActivity extends Activity {
 		trainPartIds = getTrainPartIds();
 		trainPartImages = getTrainPartImages();
 		
-		TwoWayView trainPartCollection = (TwoWayView)findViewById(R.id.trainPartCollection);
 		
-		TrainPartAdapter adapter = new TrainPartAdapter(this, R.layout.listview_item, trainParts);
-		
-		trainPartCollection.setAdapter(adapter);
-		
-		setTrainParts();
+		setTrainPartContainer();
         
         RelativeLayout buildingArea = (RelativeLayout) findViewById(R.id.buildingArea);
         buildingArea.setOnDragListener(new MyDragListener());
 	}
 	
-	public void setTrainParts() {
+	public void setTrainPartContainer() {
+		
+		LinearLayout trainPartContainer = (LinearLayout)findViewById(R.id.trainParts);
+		
+		for (TrainPart trainPart : trainParts) {
+			ImageView trainImg = new ImageView(this);
+			
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+			params.setMargins(2, 0, 2, 0);
+			trainImg.setLayoutParams(params);
+			trainImg.setAdjustViewBounds(true);
+			
+			String drawableName = trainPart.getTrainPartType().toString().toLowerCase(Locale.getDefault()) + trainPart.getId();
+	        int drawableId = context.getResources().getIdentifier(drawableName, "drawable", context.getPackageName());
+			
+			trainImg.setImageResource(drawableId);
+			
+			trainImg.setOnLongClickListener(new OnLongClickListener() {
+				
+				@Override
+				public boolean onLongClick(View v) {
+					DragShadowBuilder dragshadow = new DragShadowBuilder(v);
+	        		ClipData data = ClipData.newPlainText("", "");
+	        		
+	        		
+	        		v.startDrag(data, dragshadow, v, 0);
+	        		return true;
+				}	
+			});
+			
+			trainPartContainer.addView(trainImg);
+		}
 		
 	}
 	
@@ -195,13 +226,20 @@ public class TrainBuilderActivity extends Activity {
 				
 				//Dropped View (ImageView of ListView)
 				if (canDrop == true) {
-					ViewGroup owner = (ViewGroup) trainPart.getParent();
 					
-					owner.removeView(trainPart);
+					if (trainContainer.getChildCount() < 5) {
+						ViewGroup owner = (ViewGroup) trainPart.getParent();
+						
+						owner.removeView(trainPart);
+						
+						
+						trainContainer.addView(trainPart);
+						trainPart.setVisibility(View.VISIBLE);
+					}
+					else {
+						Toast.makeText(context, R.string.tooManyCars, Toast.LENGTH_LONG).show();
+					}
 					
-					
-					trainContainer.addView(trainPart);
-					trainPart.setVisibility(View.VISIBLE);
 				}
 				
 				else if (trainPart.getParent() == trainContainer) {

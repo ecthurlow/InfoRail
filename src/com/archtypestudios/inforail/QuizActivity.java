@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.R.anim;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.view.Gravity;
@@ -48,6 +49,7 @@ public class QuizActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.activity_quiz);
@@ -69,7 +71,7 @@ public class QuizActivity extends Activity {
 		questionTextView = (TextView)findViewById(R.id.quizQuestion);
 		answerGroup = (RadioGroup)findViewById(R.id.radio_answerGroup);
 		
-		String drawableName = "train_icon" + id;
+		String drawableName = "train" + id;
         int drawableId = getResources().getIdentifier(drawableName, "drawable", getPackageName());
         
 		questionImage.setImageResource(drawableId);
@@ -172,7 +174,6 @@ public class QuizActivity extends Activity {
 		//Make a ScrollView
 		ScrollView scrollView = new ScrollView(this);
 		scrollView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		scrollView.setBackgroundResource(R.drawable.quiz_answers_bg);
 		
 		LinearLayout allResultsContainer = new LinearLayout(this);
 		allResultsContainer.setOrientation(LinearLayout.VERTICAL);

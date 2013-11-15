@@ -9,29 +9,31 @@
     <string name="title_activity_quiz">QuizActivity</string>
     <string name="quiz_instructions">Tap the circle beside the correct answer and click the next question.</string>
     <string name="title_activity_train_builder">TrainBuilderActivity</string>
-    
+
     <!-- Subtitles -->
-    <string name="subtitle_splash">Welcome Abord!</string>
+    <string name="subtitle_splash">Please proceed to the locomotive hall</string>
     <string name="subtitle_home">Select a train</string>
     <string name="subtitle_trainBuilder">Drag and drop your train parts to build your train.</string>
     <string name="quiz">Quiz</string>
-    
     <string name="headerTitle">InfoRail - </string>
+	
+    <!-- Splash Activity -->
     
     <!-- Selected Train Activity -->
     <string name="ok">OK</string>
-    
+
     <!-- Quiz Activity -->
-    
+
     <string name="noQuestionsAvailable">Sorry, there are currently no questions available for this train.</string>
     <string name="quiz_resutlts">Your Results</string>
     <string name="correct">Correct!</string>
     <string name="incorrect">Incorrect</string>
-    
+
     <!-- Train Builder Activity -->
     <string name="trainBuilder_trainPartsTitle">Your Train Cars</string>
     <string name="noTrainPartsInBuilder">No train to animate</string>
-    
+    <string name="tooManyCars">There is no space for anymore cars</string>
+
     <!-- Button Names -->
     <string name="menu_achievements">Achievements</string>
     <string name="menu_train_builder">Build Your Train</string>
@@ -42,13 +44,14 @@
     <string name="button_retryQuiz">Retry Quiz</string>
     <string name="button_rebuild">Rebuild</string>
     <string name="button_play">Play</string>
-    
-    <!--  Messages -->
+
+    <!-- Messages -->
     <string name="noAnswerSelected">Please select an answer</string>
-    
+
     <!-- Content Descriptions -->
     <string name="contentDescription_icon">InfoRail Logo</string>
     <string name="selected_train_image_info">An image of the selected train</string>
-    
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
