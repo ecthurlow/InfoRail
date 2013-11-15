@@ -65,8 +65,14 @@ public class QuizActivity extends Activity {
 		subtitle.setText(name + " " + getString(R.string.quiz));
 		
 		//Get elements
+		ImageView questionImage = (ImageView) findViewById(R.id.quiz_image);
 		questionTextView = (TextView)findViewById(R.id.quizQuestion);
 		answerGroup = (RadioGroup)findViewById(R.id.radio_answerGroup);
+		
+		String drawableName = "train_icon" + id;
+        int drawableId = getResources().getIdentifier(drawableName, "drawable", getPackageName());
+        
+		questionImage.setImageResource(drawableId);
 		
 		//Get questions that belong to this train
 		questions = repository.questions.getByTrain(id);

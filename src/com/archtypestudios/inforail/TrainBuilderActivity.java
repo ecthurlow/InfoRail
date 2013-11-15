@@ -68,15 +68,16 @@ public class TrainBuilderActivity extends Activity {
 		
 		trainPartCollection.setAdapter(adapter);
 		
-		//height : 535 px
-		//distance: 313 px
-		
-		
-		
+		setTrainParts();
         
         RelativeLayout buildingArea = (RelativeLayout) findViewById(R.id.buildingArea);
         buildingArea.setOnDragListener(new MyDragListener());
 	}
+	
+	public void setTrainParts() {
+		
+	}
+	
 	
 	public void rebuildTrain(View view) {
 		Intent intent = new Intent(TrainBuilderActivity.this, TrainBuilderActivity.class);
