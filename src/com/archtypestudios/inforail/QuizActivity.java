@@ -166,7 +166,7 @@ public class QuizActivity extends Activity {
 		//Make a ScrollView
 		ScrollView scrollView = new ScrollView(this);
 		scrollView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		//scrollView.setBackgroundColor(Color.parseColor("#FF0000"));
+		scrollView.setBackgroundResource(R.drawable.quiz_answers_bg);
 		
 		LinearLayout allResultsContainer = new LinearLayout(this);
 		allResultsContainer.setOrientation(LinearLayout.VERTICAL);
@@ -263,7 +263,12 @@ public class QuizActivity extends Activity {
 	
 	public void winTrainPart() {
 		
-		//List<TrainPart> wonTrainParts = repository.trainParts.getByTrain();
+		List<TrainPart> wonTrainParts = repository.trainParts.getByTrain(id);
+		
+		for(TrainPart trainPart : wonTrainParts) {
+			trainPart.setWon(true);
+			repository.trainParts.updateTrainPart(trainPart);
+		}
 	}
 	
 	public void goToHome(View view) {

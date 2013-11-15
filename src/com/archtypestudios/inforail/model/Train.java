@@ -11,9 +11,6 @@ public class Train {
 	
 	@DatabaseField
 	private String nameStringId;
-	
-	@DatabaseField(foreign=true, foreignAutoRefresh=true)
-	private TrainPart trainPart;
 
 	public int getId() {
 		return id;
@@ -29,14 +26,6 @@ public class Train {
 
 	public void setNameStringId(String nameStringId) {
 		this.nameStringId = nameStringId;
-	}
-
-	public TrainPart getTrainPart() {
-		return trainPart;
-	}
-
-	public void setTrainPart(TrainPart trainPart) {
-		this.trainPart = trainPart;
 	}
 	
 }

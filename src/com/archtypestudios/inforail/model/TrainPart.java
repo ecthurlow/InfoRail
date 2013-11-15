@@ -16,6 +16,9 @@ public class TrainPart {
 	@DatabaseField(foreign=true, foreignAutoRefresh=true)
 	private Train train;
 	
+	@DatabaseField
+	private Boolean won;
+	
 	public Train getTrain() {
 		return train;
 	}
@@ -23,9 +26,6 @@ public class TrainPart {
 	public void setTrain(Train train) {
 		this.train = train;
 	}
-
-	@DatabaseField
-	private Boolean won;
 
 	public int getId() {
 		return id;
@@ -41,14 +41,6 @@ public class TrainPart {
 
 	public void setTrainPartType(TrainPartType trainPartType) {
 		trainPartType = this.trainPartType;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
 	}
 
 	public Boolean getWon() {

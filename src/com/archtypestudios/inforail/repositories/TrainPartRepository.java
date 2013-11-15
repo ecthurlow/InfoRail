@@ -11,6 +11,7 @@ import com.archtypestudios.inforail.model.TrainPart;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.UpdateBuilder;
 
 public class TrainPartRepository {
 	
@@ -69,5 +70,18 @@ public class TrainPartRepository {
 	             e.printStackTrace();
 	     }
 	     return null;
+	}
+	
+	public void updateTrainPart(TrainPart trainPart) {
+		
+		try {
+			trainPartDao.update(trainPart);
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		catch(java.sql.SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
