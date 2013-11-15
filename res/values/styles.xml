@@ -16,12 +16,6 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    
-    
-    <!-- Two Way View Theme -->
-    <style name="TwoWayView">
-	    <item name="android:orientation">horizontal</item>
-	</style>
 	
 	<!-- ^ -->
 	<style name="InfoRailWindowTitleBackground">

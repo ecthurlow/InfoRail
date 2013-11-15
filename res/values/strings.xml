@@ -11,14 +11,14 @@
     <string name="title_activity_train_builder">TrainBuilderActivity</string>
 
     <!-- Subtitles -->
-    <string name="subtitle_splash">Please proceed to the locomotive hall</string>
+    <string name="subtitle_splash">Please proceed to the Locomotive Hall</string>
     <string name="subtitle_home">Select a train</string>
     <string name="subtitle_trainBuilder">Drag and drop your train parts to build your train.</string>
     <string name="quiz">Quiz</string>
     <string name="headerTitle">InfoRail - </string>
 	
     <!-- Splash Activity -->
-    <string name="splash_text">Next Stop: </string>
+    <string name="splash_text">Next Stop: the Locomotive Hall</string>
     
     <!-- Selected Train Activity -->
     <string name="ok">OK</string>
@@ -29,6 +29,7 @@
     <string name="quiz_resutlts">Your Results</string>
     <string name="correct">Correct!</string>
     <string name="incorrect">Incorrect</string>
+    <string name="winner">Congratulations! You have won the following train parts:</string>
 
     <!-- Train Builder Activity -->
     <string name="trainBuilder_trainPartsTitle">Your Train Cars</string>
@@ -54,5 +55,7 @@
     <string name="selected_train_image_info">An image of the selected train</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="hello_world">Hello world!</string>
+   
+    <string name="underDevelopment">Sorry, this section is currently under development.</string>
 
 </resources>

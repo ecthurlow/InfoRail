@@ -111,7 +111,7 @@ public class TrainBuilderActivity extends Activity {
 	}
 	
 	public void playTrain(View view) {
-		
+		/*
 		//check if anything is inside trainContainer
 		LinearLayout trainContainer = (LinearLayout) findViewById(R.id.trainContainer);
 		if (trainContainer.getChildCount() > 0) {
@@ -139,7 +139,8 @@ public class TrainBuilderActivity extends Activity {
 		
 		else {
 			Toast.makeText(context, getResources().getText(R.string.noTrainPartsInBuilder), Toast.LENGTH_LONG).show();
-		}
+		}*/
+		Toast.makeText(context, getResources().getText(R.string.underDevelopment), Toast.LENGTH_LONG).show();
 	}
 	
 	public ArrayList<Integer> getTrainPartIds() {

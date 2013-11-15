@@ -2,6 +2,7 @@ package com.archtypestudios.inforail;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import com.archtypestudios.inforail.model.Answer;
 import com.archtypestudios.inforail.model.Question;
@@ -13,6 +14,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
@@ -162,32 +164,42 @@ public class QuizActivity extends Activity {
 		//Remove instructions, questions, and answers
 		LinearLayout contentLayout = (LinearLayout)findViewById(R.id.quiz_content);
 		contentLayout.removeAllViews();
+		contentLayout.setOrientation(LinearLayout.HORIZONTAL);
 		
 		//Add Title
 		TextView title = new TextView(this);
 		title.setText(R.string.quiz_resutlts);
-		contentLayout.addView(title);
+		
 		
 		//Make a ScrollView
 		ScrollView scrollView = new ScrollView(this);
-		scrollView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		
-		LinearLayout allResultsContainer = new LinearLayout(this);
+		LinearLayout.LayoutParams scrollViewParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
+		scrollViewParams.weight = 1;
+		scrollViewParams.gravity = Gravity.LEFT;
+		
+		
+		scrollView.setLayoutParams(scrollViewParams);
+		
+		LinearLayout allResultsContainer = new LinearLayout(this);	
+		
 		allResultsContainer.setOrientation(LinearLayout.VERTICAL);
 		LinearLayout.LayoutParams allResultsContainerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-		
+		allResultsContainerParams.gravity = Gravity.LEFT;
 		allResultsContainer.setLayoutParams(allResultsContainerParams);
+		
+		allResultsContainer.addView(title);
 		
 		//Go through answers
 		for (Integer selectedAnswer: selectedAnswers) {
 			
 			//create answer LinearLayout container
 			LinearLayout answerLayout = new LinearLayout(this);
-			//answerLayout.setBackgroundColor(Color.parseColor("#00FF00"));
 			answerLayout.setOrientation(LinearLayout.VERTICAL);
 			
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 			params.setMargins(0, 40, 0, 0);
+			params.gravity = Gravity.LEFT;
 			answerLayout.setLayoutParams(params);
 			
 			//Get answer from repository
@@ -195,7 +207,6 @@ public class QuizActivity extends Activity {
 			
 			//create questionTextView
 			TextView resultQuestion = new TextView(this);
-			//resultQuestion.setBackgroundColor(Color.parseColor("#0000FF"));
 			resultQuestion.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 			resultQuestion.setText(answer.getQuestion().getTextStringId());
 			answerLayout.addView(resultQuestion);
@@ -257,22 +268,61 @@ public class QuizActivity extends Activity {
 		
 		contentLayout.addView(scrollView);
 		
+		
 
 		//Check for perfect score
 		if (score == total) {
-			winTrainPart();
+			winTrainPart(contentLayout);
 		}
 		
 	}
 	
-	public void winTrainPart() {
+	public void winTrainPart(LinearLayout l) {
 		
 		List<TrainPart> wonTrainParts = repository.trainParts.getByTrain(id);
+		List<ImageView> wonTrainPartImages = new ArrayList<ImageView>();
 		
 		for(TrainPart trainPart : wonTrainParts) {
+			//set as won in database
 			trainPart.setWon(true);
 			repository.trainParts.updateTrainPart(trainPart);
+			
+			//create image view with won train part
+			ImageView img = new ImageView(this);
+			
+			LinearLayout.LayoutParams imgParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+			imgParams.setMargins(0, 10, 0, 0);
+			
+			img.setLayoutParams(imgParams);
+			
+			String drawableName = trainPart.getTrainPartType().toString().toLowerCase(Locale.getDefault()) + trainPart.getId();
+	        int drawableId = getResources().getIdentifier(drawableName, "drawable", getPackageName());
+	        
+			img.setImageResource(drawableId);
+			
+			wonTrainPartImages.add(img);
 		}
+		
+		//create view that shows train parts
+		LinearLayout wonTrainPartView = new LinearLayout(this);
+		LinearLayout.LayoutParams wonTrainPartsParams = new LinearLayout.LayoutParams(300, LinearLayout.LayoutParams.MATCH_PARENT);
+		wonTrainPartView.setLayoutParams(wonTrainPartsParams);
+		wonTrainPartsParams.gravity = Gravity.RIGHT;
+		wonTrainPartView.setOrientation(LinearLayout.VERTICAL);
+		
+		
+		TextView wonMessage = new TextView(this);
+		LinearLayout.LayoutParams wonMessageParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+		wonMessage.setLayoutParams(wonMessageParams);
+		wonMessage.setText(R.string.winner);
+		
+		wonTrainPartView.addView(wonMessage);
+		
+		for (ImageView img : wonTrainPartImages) {
+			wonTrainPartView.addView(img);
+		}
+		
+		l.addView(wonTrainPartView);
 	}
 	
 	public void goToHome(View view) {
