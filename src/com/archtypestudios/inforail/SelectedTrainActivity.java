@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.archtypestudios.inforail.model.TrainInfo;
 import com.archtypestudios.inforail.repositories.Repository;
-import com.archtypestudios.inforail.themes.InfoRailActivity;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -15,11 +14,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;

@@ -7,7 +7,6 @@ import com.archtypestudios.inforail.R;
 import com.archtypestudios.inforail.adapters.TrainAdapter;
 import com.archtypestudios.inforail.model.Train;
 import com.archtypestudios.inforail.repositories.Repository;
-import com.archtypestudios.inforail.themes.InfoRailActivity;
 
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;

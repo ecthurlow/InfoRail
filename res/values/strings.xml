@@ -18,6 +18,7 @@
     <string name="headerTitle">InfoRail - </string>
 	
     <!-- Splash Activity -->
+    <string name="splash_text">Next Stop: </string>
     
     <!-- Selected Train Activity -->
     <string name="ok">OK</string>

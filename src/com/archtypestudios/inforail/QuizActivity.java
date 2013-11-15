@@ -7,15 +7,12 @@ import com.archtypestudios.inforail.model.Answer;
 import com.archtypestudios.inforail.model.Question;
 import com.archtypestudios.inforail.model.TrainPart;
 import com.archtypestudios.inforail.repositories.Repository;
-import com.archtypestudios.inforail.themes.InfoRailActivity;
 
 import android.os.Bundle;
-import android.R.anim;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;

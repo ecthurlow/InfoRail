@@ -6,12 +6,10 @@ import java.util.List;
 import android.database.SQLException;
 
 import com.archtypestudios.inforail.db.DatabaseHelper;
-import com.archtypestudios.inforail.model.TrainInfo;
 import com.archtypestudios.inforail.model.TrainPart;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
-import com.j256.ormlite.stmt.UpdateBuilder;
 
 public class TrainPartRepository {
 	

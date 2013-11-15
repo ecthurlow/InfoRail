@@ -4,12 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.lucasr.twowayview.TwoWayView;
-
-import com.archtypestudios.inforail.adapters.TrainPartAdapter;
 import com.archtypestudios.inforail.model.TrainPart;
 import com.archtypestudios.inforail.repositories.Repository;
-import com.archtypestudios.inforail.themes.InfoRailActivity;
 import com.archtypestudios.inforail.widgets.MarqueeLayout;
 
 import android.os.Bundle;
@@ -30,7 +26,6 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.LinearLayout;
